@@ -8,11 +8,7 @@ package dsproyecto;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -23,16 +19,14 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author Usuario
+ * @author Acer
  */
 public class VentanaInicioController implements Initializable {
 
     /**
      * Initializes the controller class.
      */
-    @FXML
     private Button log;
-    @FXML
     private Button regis;
     
     private Parent ventlog,ventreg;
@@ -40,7 +34,7 @@ public class VentanaInicioController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
         log.setOnAction((ActionEvent event) -> {
             try {
                 getVentLogin();

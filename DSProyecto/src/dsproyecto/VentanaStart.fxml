@@ -10,16 +10,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="412.0" prefWidth="548.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="419.0" prefWidth="617.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="673.0">
+      <HBox layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
          <children>
             <HBox prefHeight="400.0" prefWidth="376.0">
                <children>
                   <VBox prefHeight="400.0" prefWidth="191.0">
                      <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="6.0" prefHeight="17.0" prefWidth="192.0" text="Articulos mas buscados" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
-                        <TableView prefHeight="382.0" prefWidth="153.0">
+                        <TableView prefHeight="382.0" prefWidth="191.0">
                            <columns>
                               <TableColumn prefWidth="75.0" text="Nombre" />
                               <TableColumn prefWidth="75.0" text="Veces Buscado" />
@@ -64,7 +65,6 @@
                   </AnchorPane>
                </items>
             </SplitPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
          </children>
       </HBox>
    </children>

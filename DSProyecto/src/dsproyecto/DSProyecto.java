@@ -19,12 +19,12 @@ public class DSProyecto extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("VentanaSesion.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("VentanaInicio.fxml"));
         
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
-        stage.setTitle("Inicio de Sesión");
+        stage.setTitle("Poliventas");
         stage.show();
     }
 
