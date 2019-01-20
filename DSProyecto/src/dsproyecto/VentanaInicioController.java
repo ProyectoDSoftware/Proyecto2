@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -23,18 +24,18 @@ import javafx.stage.Stage;
  */
 public class VentanaInicioController implements Initializable {
 
+    @FXML
+    private Button log;
+    @FXML
+    private Button reg;
+
+    private Parent ventlog,ventreg;
+    private Stage stagelog,stagereg;
     /**
      * Initializes the controller class.
      */
-    private Button log;
-    private Button regis;
-    
-    private Parent ventlog,ventreg;
-    private Stage stagelog,stagereg;
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
         log.setOnAction((ActionEvent event) -> {
             try {
                 getVentLogin();
@@ -43,7 +44,7 @@ public class VentanaInicioController implements Initializable {
             }
         });
         
-        regis.setOnAction((ActionEvent event) -> {
+        reg.setOnAction((ActionEvent event) -> {
             try {
                 getVentRegistro();
             } catch (IOException ex) {
@@ -65,5 +66,4 @@ public class VentanaInicioController implements Initializable {
         stagereg.setScene(new Scene(ventreg));
         stagereg.show();
     }
-    
 }
