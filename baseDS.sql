@@ -10,7 +10,8 @@ whatsapp boolean,
 email varchar(30),
 direccion varchar(30),
 usuario varchar(20),
-passwd varchar(20) 
+passwd varchar(20),
+disponible boolean 
 );
 
 create table Comprador(
@@ -65,7 +66,8 @@ nombre varchar(20),
 categoria varchar(20),
 tiempoMaxima date,
 precio decimal(5,2),
-vecesBuscadan int
+vecesBuscadan int,
+disponible boolean
 );
 
 create table Vendedor_articulo(
