@@ -46,6 +46,7 @@ public class VentanaSesionController implements Initializable {
             if(tx1.getText().equals("comprador") && tx2.getText().equals("compra")){
                 try{
                     getVentComp();
+                    
                 }catch(IOException e){
                     System.out.println("No se puede abrir la ventana");
                 }
