@@ -1,5 +1,11 @@
+drop database Poliventas;
 create database Poliventas;
 use Poliventas;
+
+create table Rol(
+idRol int primary key,
+nombreRol varchar(15)
+);
 
 create table Usuario(
 cedula varchar(10) primary key,
@@ -11,30 +17,61 @@ email varchar(30),
 direccion varchar(30),
 usuario varchar(20),
 passwd varchar(20),
-disponible boolean 
+rol int,
+disponible bit default 1,
+FOREIGN KEY (rol) REFERENCES Rol(idRol)
 );
 
 create table Comprador(
 idComprador int primary key,
-idUser varchar(10),
-FOREIGN KEY (idUser) REFERENCES Usuario(cedula)
+idr int,
+userID varchar(10),
+FOREIGN KEY (idr) REFERENCES Rol(idRol),
+FOREIGN KEY (userID) REFERENCES Usuario(cedula)
 );
 
 create table Vendedor(
 idVendedor int primary key,
-idUser varchar(10),
-FOREIGN KEY (idUser) REFERENCES Usuario(cedula)
+rateProm decimal(5,2),
+idr int,
+userID varchar(10),
+FOREIGN KEY (idr) REFERENCES Rol(idRol),
+FOREIGN KEY (userID) REFERENCES Usuario(cedula)
 );
 
 create table Administrador(
 idAdmi int primary key,
-idUser varchar(10),
-FOREIGN KEY (idUser) REFERENCES Usuario(cedula)
+idr int,
+userID varchar(10),
+FOREIGN KEY (idr) REFERENCES Rol(idRol),
+FOREIGN KEY (userID) REFERENCES Usuario(cedula)
+);
+
+create table Tarjeta(
+idTarjeta varchar(16) primary key,
+fechaValida date,
+nombreDueno varchar(30),
+banco varchar(20)
 );
 
 create table Pago(
 idPago int primary key,
 nombre varchar(10)
+);
+
+create table PagoEfectivo(
+idPE int primary key,
+idp int,
+FOREIGN KEY (idp) REFERENCES Pago(idPago) 
+);
+
+create table PagoApp(
+idPA int primary key,
+saldo decimal(5,2),
+tarjeta varchar(16),
+idp int,
+FOREIGN KEY (idp) REFERENCES Pago(idPago),
+FOREIGN KEY (tarjeta) REFERENCES Tarjeta(idTarjeta)
 );
 
 create table Pedido(
@@ -66,8 +103,9 @@ nombre varchar(20),
 categoria varchar(20),
 tiempoMaxima date,
 precio decimal(5,2),
-vecesBuscadan int,
-disponible boolean
+vecesBuscadas int,
+rateProm decimal(5,2),
+disponible bit default 1
 );
 
 create table Vendedor_articulo(
