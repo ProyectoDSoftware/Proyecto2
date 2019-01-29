@@ -1,5 +1,6 @@
 use poliventas;
 
+-- cantidad de ventas por semana
 create view ventasPorSemana as
 select count(v.idVenta) as cantidadVentas, pa.nombre as formaDePago, p.fechaEntrega  
 from Venta v 
@@ -9,11 +10,12 @@ WHERE p.fechaEntrega like '2018%'
 GROUP BY v.formaPago, v.vend
 ORDER BY p.fechaEntrega;
 
+-- articulos mas buscados 
 create view ArticulosMasBuscados as 
 select a.nombre 
 from Articulo a JOIN pedido_articulo pa on pa.art = a.idArticulo
 JOIN Pedido p ON pa.pedid = p.idPedido 
-WHERE vecesBuscadan >= (select avg(vecesBuscadan) from Articulo) 
+WHERE vecesBuscadas >= (select avg(vecesBuscadas) from Articulo) 
 AND fechaEntrega LIKE '2018%' limit 10;
 
 -- consultar informacion de un usuario
@@ -66,5 +68,47 @@ select p.idPedido, p.estado, p.fechaEntrega, p.costoTotal, u.nombre
 into cod, state, dat, total, nmb
 from pedido p, usuario u, comprador c
 where u.cedula = c.idUser and c.idComprador = p.compr and p.estado = 'pendiente' and u.cedula = id;
+end ||
+delimiter ;
+
+-- crear un usuario nuevo
+delimiter ||
+create procedure crearUsuario(in id varchar(10), in nomb varchar(20), in apell varchar(20), in phone int, in ws boolean, in mail varchar(30), in address varchar(30), in username varchar(20), in passwd varchar(20), in rol int)
+begin
+
+insert into Usuario values(id,nomb,apell,phone,ws, mail,address,username,passwd,rol,1);
+
+end ||
+delimiter ;
+
+-- crear un articulo nuevo
+delimiter ||
+create procedure crearArticulo(in id varchar(10), in nomb varchar(20), in catgo varchar(20), in timeMax date, in cost decimal(5,2))
+begin
+
+insert into Articulo values(id,nomb,catgo,timeMax,cost,0,0,1);
+
+end ||
+delimiter ;
+
+-- actualiza la calificacion promedio de un usuario
+delimiter ||
+create procedure calificarUser(in id varchar(10))
+begin
+
+update vendedor rateProm set rateProm = (select avg(cantidad) from calificacion join Calificacion_Vendedor on idc=rate where vend = id)
+where idVendedor=id;
+
+end ||
+delimiter ;
+
+-- actualiza la calificacion promedio de un articulo
+delimiter ||
+create procedure calificarProduc(in id int)
+begin
+
+update Articulo rateProm set rateProm = (select avg(cantidad) from calificacion join Calificacion_Articulo on idc=rate where art = id)
+where idArticulo=id;
+
 end ||
 delimiter ;
