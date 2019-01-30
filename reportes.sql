@@ -112,3 +112,12 @@ where idArticulo=id;
 
 end ||
 delimiter ;
+
+-- metodo para conocer los pedidos pendientes de un comprador (idcompra)
+delimiter ||
+create procedure conocerPedidosPendientes(IN idcompra int)
+begin
+select idPedido, fechaEntrega, costoTotal, vend from Pedido 
+where compr = idcompra and estado = 'pendiente';
+end ||
+delimiter ;
