@@ -20,10 +20,10 @@ AND fechaEntrega LIKE '2018%' limit 10;
 
 -- consultar informacion de un usuario
 delimiter ||
-create procedure consultarUsuario(in id varchar(10), out nmb varchar(20), out apl varchar(20), out tel int, out dir varchar(30) )
+create procedure consultarUsuario(in id varchar(10), out nmb varchar(20), out rl varchar(15), out apl varchar(20), out tel int, out dir varchar(30) )
 begin
-	select nombre, apellido, telefono, direccion into 
-    nmb, apl, tel, dir from Usuario where cedula = id;
+	select nombre, apellido, telefono, direccion, nombreRol into 
+    nmb, apl, tel, dir, rl from Usuario JOIN Rol on rol = idRol where cedula = id;
 end ||
 delimiter ;
 
@@ -119,5 +119,13 @@ create procedure conocerPedidosPendientes(IN idcompra int)
 begin
 select idPedido, fechaEntrega, costoTotal, vend from Pedido 
 where compr = idcompra and estado = 'pendiente';
+end ||
+delimiter ;
+
+delimiter ||
+create procedure conocerVentasPorVendedor(in idVende int)
+begin
+select idVenta, estado, lugarEntrega, pedid, formaPago from Venta
+where vend = idVende;
 end ||
 delimiter ;
