@@ -5,9 +5,13 @@
  */
 package dsproyecto;
 
+import Modelo.Conexion;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -24,7 +29,9 @@ import javafx.stage.Stage;
  * @author Acer
  */
 public class VentanaSesionController implements Initializable {
-
+    /**
+     * Initializes the controller class.
+     */
     @FXML
     private TextField tx1;
     @FXML
@@ -34,18 +41,21 @@ public class VentanaSesionController implements Initializable {
     @FXML
     private Button regis;
     
-    private Parent ventComp, ventVend, ventAdmi, ventReg;
-    
-    private Stage stageComp, stageVend, stageAdmi, stageReg;
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    private AnchorPane WindowLogin;
+
+    private Conexion conexion;
+    @FXML
+    private Button exit;
     @Override
     public void initialize(URL url, ResourceBundle rb){
+        conexion=new Conexion();
+        MetodosChangeWindow metodo = new MetodosChangeWindow();
+        
         sesion.setOnAction((ActionEvent event) -> {
             if(tx1.getText().equals("comprador") && tx2.getText().equals("compra")){
                 try{
-                    getVentComp();
+                    metodo.ChangeWindow("VentanaComprador", WindowLogin,"Customer");
                     
                 }catch(IOException e){
                     System.out.println("No se puede abrir la ventana");
@@ -53,14 +63,14 @@ public class VentanaSesionController implements Initializable {
             }
             else if(tx1.getText().equals("vendedor") && tx2.getText().equals("vende")){
                 try{
-                    getVentVend();
+                    metodo.ChangeWindow("VentanaVendedor", WindowLogin,"Seller");
                 }catch(IOException e){
                     System.out.println("No se puede abrir la ventana");
                 }
             }
             else if(tx1.getText().equals("administra") && tx2.getText().equals("admi")){
                 try{
-                    getVentAdmi();
+                    metodo.ChangeWindow("VentanaAdministrador", WindowLogin,"Administrator");
                 }catch(IOException e){
                     System.out.println("No se puede abrir la ventana");
                 }
@@ -72,54 +82,20 @@ public class VentanaSesionController implements Initializable {
         
         regis.setOnAction((ActionEvent event) -> {
             try{
-                getRegistro();
+                metodo.getVent("VentanaRegistro", "Register");
             }catch(IOException e){
                 System.out.println("No se puede abrir la ventana");
             }
         });
+        exit.setOnAction((ActionEvent e) -> {
+            try {
+                conexion.cerrarConexion();
+            } catch (SQLException ex) {
+                Logger.getLogger(VentanaSesionController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            DSProyecto.getStage(WindowLogin, "").close();
+        });
+            
     }    
     
-    public void getVentComp() throws IOException{
-        stageComp = new Stage();
-        stageComp.setTitle("Ventana Comprador");
-        ventComp = FXMLLoader.load(getClass().getResource("VentanaComprador.fxml"));
-        stageComp.setScene(new Scene(ventComp));
-        stageComp.show();
-    }
-    
-    public void getVentVend() throws IOException{
-        stageVend = new Stage();
-        stageVend.setTitle("Ventana Vendedor");
-        ventVend = FXMLLoader.load(getClass().getResource("VentanaVendedor.fxml"));
-        stageVend.setScene(new Scene(ventVend));
-        stageVend.show();
-    }
-    
-    public void getVentAdmi() throws IOException{
-        stageAdmi = new Stage();
-        stageAdmi.setTitle("Ventana Administrador");
-        ventAdmi = FXMLLoader.load(getClass().getResource("VentanaAdministrador.fxml"));
-        stageAdmi.setScene(new Scene(ventAdmi));
-        stageAdmi.show();
-    }
-    
-    public void getRegistro() throws IOException{
-        stageReg = new Stage();
-        stageReg.setTitle("Registro");
-        ventReg = FXMLLoader.load(getClass().getResource("VentanaRegistro.fxml"));
-        stageReg.setScene(new Scene(ventReg));
-        stageReg.show();
-    }
-    
-    public void getClosedComprador(){
-        stageComp.hide();
-    }
-    
-    public void getClosedVendedor(){
-        stageVend.hide();
-    }
-    
-    public void getClosedAdministra(){
-        stageAdmi.hide();
-    }
 }

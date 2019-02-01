@@ -54,11 +54,14 @@ public class VentanaVendedorController implements Initializable {
 
     private Stage stageArticulo;
     private Parent ventArticulo;
+    @FXML
+    private AnchorPane PaneSeller;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        MetodosChangeWindow metodo=new MetodosChangeWindow();
         opcSimple.setOnAction((ActionEvent event) -> {
             search.setVisible(true);
             pedidos.setVisible(false);
@@ -101,19 +104,16 @@ public class VentanaVendedorController implements Initializable {
         
         btnArticulo.setOnAction((ActionEvent event) -> {
             try {
-                getRegistroArticulo();
+                metodo.getVent("VentanaArticulo","Register Article");
             } catch (IOException ex) {
                 System.out.println("No se puede abrir la ventana");
             }
         });
+        
+        exit.setOnAction((ActionEvent e) ->{
+            DSProyecto.getStage(PaneSeller,"").close();
+        });
     }
-
-public void getRegistroArticulo() throws IOException{
-        stageArticulo = new Stage();
-        stageArticulo.setTitle("Nuevo Artículo");
-        ventArticulo = FXMLLoader.load(getClass().getResource("VentanaArticulo.fxml"));
-        stageArticulo.setScene(new Scene(ventArticulo));
-        stageArticulo.show();
-    }    
+  
     
 }
