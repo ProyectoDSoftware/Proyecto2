@@ -35,8 +35,9 @@ public class Usuario {
         this.cedula = cedula;
     }
 
-
-    
+    public Usuario(String username){
+        this.usuario=username;
+    }
     public String getUsuario() {
         return usuario;
     }

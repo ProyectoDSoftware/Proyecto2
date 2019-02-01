@@ -5,9 +5,13 @@
  */
 package dsproyecto;
 
+import Modelo.Conexion;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +29,9 @@ import javafx.stage.Stage;
  * @author Acer
  */
 public class VentanaSesionController implements Initializable {
-
+    /**
+     * Initializes the controller class.
+     */
     @FXML
     private TextField tx1;
     @FXML
@@ -35,16 +41,15 @@ public class VentanaSesionController implements Initializable {
     @FXML
     private Button regis;
     
-    private Parent ventComp, ventVend, ventAdmi, ventReg;
-    
-    private Stage stageComp, stageVend, stageAdmi, stageReg;
     @FXML
     private AnchorPane WindowLogin;
-    /**
-     * Initializes the controller class.
-     */
+
+    private Conexion conexion;
+    @FXML
+    private Button exit;
     @Override
     public void initialize(URL url, ResourceBundle rb){
+        conexion=new Conexion();
         MetodosChangeWindow metodo = new MetodosChangeWindow();
         
         sesion.setOnAction((ActionEvent event) -> {
@@ -77,31 +82,20 @@ public class VentanaSesionController implements Initializable {
         
         regis.setOnAction((ActionEvent event) -> {
             try{
-                getRegistro();
+                metodo.getVent("VentanaRegistro", "Register");
             }catch(IOException e){
                 System.out.println("No se puede abrir la ventana");
             }
         });
+        exit.setOnAction((ActionEvent e) -> {
+            try {
+                conexion.cerrarConexion();
+            } catch (SQLException ex) {
+                Logger.getLogger(VentanaSesionController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            DSProyecto.getStage(WindowLogin, "").close();
+        });
+            
     }    
-      
-    public void getRegistro() throws IOException{
-        stageReg = new Stage();
-        stageReg.setTitle("Registro");
-        ventReg = FXMLLoader.load(getClass().getResource("VentanaRegistro.fxml"));
-        stageReg.setScene(new Scene(ventReg));
-        stageReg.show();
-    }
-    
-    public void getClosedComprador(){
-        stageComp.hide();
-    }
-    
-    public void getClosedVendedor(){
-        stageVend.hide();
-    }
-    
-    public void getClosedAdministra(){
-        stageAdmi.hide();
-    }
     
 }
