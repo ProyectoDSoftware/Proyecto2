@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -34,6 +35,8 @@ public class VentanaCompradorController implements Initializable {
     private BorderPane pedidos;
     @FXML
     private BorderPane articulos;
+    @FXML
+    private AnchorPane PaneClient;
 
     /**
      * Initializes the controller class.
@@ -58,6 +61,9 @@ public class VentanaCompradorController implements Initializable {
             pedidos.setVisible(false); 
         });
         
+        exit.setOnAction((ActionEvent e) ->{
+            DSProyecto.getStage(PaneClient,"").close();
+        });
     }    
     
 }

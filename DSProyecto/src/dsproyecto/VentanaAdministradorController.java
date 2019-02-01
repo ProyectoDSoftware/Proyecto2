@@ -43,6 +43,8 @@ public class VentanaAdministradorController implements Initializable {
 
     private Stage stageNewUser, stageNewProduc;
     private Parent ventNewUser, ventNewProduc;
+    @FXML
+    private AnchorPane AdminGeneral;
     /**
      * Initializes the controller class.
      */
@@ -70,6 +72,10 @@ public class VentanaAdministradorController implements Initializable {
             }catch(IOException e){
                 System.out.println("No se puede abrir la ventana");
             }
+        });
+        
+        exit.setOnAction((ActionEvent e) ->{
+            DSProyecto.getStage(AdminGeneral,"").close();
         });
     }
 

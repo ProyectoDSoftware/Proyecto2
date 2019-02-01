@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -37,15 +38,19 @@ public class VentanaSesionController implements Initializable {
     private Parent ventComp, ventVend, ventAdmi, ventReg;
     
     private Stage stageComp, stageVend, stageAdmi, stageReg;
+    @FXML
+    private AnchorPane WindowLogin;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb){
+        MetodosChangeWindow metodo = new MetodosChangeWindow();
+        
         sesion.setOnAction((ActionEvent event) -> {
             if(tx1.getText().equals("comprador") && tx2.getText().equals("compra")){
                 try{
-                    getVentComp();
+                    metodo.ChangeWindow("VentanaComprador", WindowLogin,"Customer");
                     
                 }catch(IOException e){
                     System.out.println("No se puede abrir la ventana");
@@ -53,14 +58,14 @@ public class VentanaSesionController implements Initializable {
             }
             else if(tx1.getText().equals("vendedor") && tx2.getText().equals("vende")){
                 try{
-                    getVentVend();
+                    metodo.ChangeWindow("VentanaVendedor", WindowLogin,"Seller");
                 }catch(IOException e){
                     System.out.println("No se puede abrir la ventana");
                 }
             }
             else if(tx1.getText().equals("administra") && tx2.getText().equals("admi")){
                 try{
-                    getVentAdmi();
+                    metodo.ChangeWindow("VentanaAdministrador", WindowLogin,"Administrator");
                 }catch(IOException e){
                     System.out.println("No se puede abrir la ventana");
                 }
@@ -78,31 +83,7 @@ public class VentanaSesionController implements Initializable {
             }
         });
     }    
-    
-    public void getVentComp() throws IOException{
-        stageComp = new Stage();
-        stageComp.setTitle("Ventana Comprador");
-        ventComp = FXMLLoader.load(getClass().getResource("VentanaComprador.fxml"));
-        stageComp.setScene(new Scene(ventComp));
-        stageComp.show();
-    }
-    
-    public void getVentVend() throws IOException{
-        stageVend = new Stage();
-        stageVend.setTitle("Ventana Vendedor");
-        ventVend = FXMLLoader.load(getClass().getResource("VentanaVendedor.fxml"));
-        stageVend.setScene(new Scene(ventVend));
-        stageVend.show();
-    }
-    
-    public void getVentAdmi() throws IOException{
-        stageAdmi = new Stage();
-        stageAdmi.setTitle("Ventana Administrador");
-        ventAdmi = FXMLLoader.load(getClass().getResource("VentanaAdministrador.fxml"));
-        stageAdmi.setScene(new Scene(ventAdmi));
-        stageAdmi.show();
-    }
-    
+      
     public void getRegistro() throws IOException{
         stageReg = new Stage();
         stageReg.setTitle("Registro");
@@ -122,4 +103,5 @@ public class VentanaSesionController implements Initializable {
     public void getClosedAdministra(){
         stageAdmi.hide();
     }
+    
 }
