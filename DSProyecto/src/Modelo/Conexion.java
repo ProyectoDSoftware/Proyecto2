@@ -55,6 +55,19 @@ public class Conexion {
         alert.showAndWait();
     }
     
+    public String selectArticuloMasBuscado(Connection conexion){
+        String sql="Select * from ArticulosMasBuscados";
+        try (Statement stmt=conexion.createStatement() ;
+            ResultSet rs=stmt.executeQuery(sql);){
+            while (rs.next()) {
+                return rs.getString("nombre");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            alarm("Ocurrio un problema con la conexion a la base de datos, reinicie aplicación");
+        }
+        return "";
+    }
     public Usuario selectUsuario(Connection conexion,String username){
         Usuario userPrueba=new Usuario(Constants.PRUEBA);  
         String sql="call SP_SeleccionarUsuario('"+username+"');";
