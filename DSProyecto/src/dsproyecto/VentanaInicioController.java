@@ -5,6 +5,7 @@
  */
 package dsproyecto;
 
+import Modelo.Conexion;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,11 +33,14 @@ public class VentanaInicioController implements Initializable {
 
     @FXML
     private AnchorPane PaneInit;
+    
+    private Conexion conexion;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        conexion=new Conexion();
         MetodosChangeWindow metodo = new MetodosChangeWindow();
         log.setOnAction((ActionEvent event) -> {
             try {

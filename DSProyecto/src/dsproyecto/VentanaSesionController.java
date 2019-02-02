@@ -6,6 +6,8 @@
 package dsproyecto;
 
 import Modelo.Conexion;
+import Modelo.Usuario;
+import Modelo.Constants;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -53,6 +55,15 @@ public class VentanaSesionController implements Initializable {
         MetodosChangeWindow metodo = new MetodosChangeWindow();
         
         sesion.setOnAction((ActionEvent event) -> {
+            if(this.validarText()){
+                try {
+                    verificar(metodo);
+                } catch (IOException ex) {
+                    Logger.getLogger(VentanaSesionController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else{
+                MetodosChangeWindow.alarm("Intente de nuevo");
+            }
             if(tx1.getText().equals("comprador") && tx2.getText().equals("compra")){
                 try{
                     metodo.ChangeWindow("VentanaComprador", WindowLogin,"Customer");
@@ -98,4 +109,21 @@ public class VentanaSesionController implements Initializable {
             
     }    
     
+    private boolean validarText() {
+        return !(tx1.getText().equals("") || tx2.getText().equals(""));
+    }
+    
+    private void verificar(MetodosChangeWindow metodo) throws IOException{
+        Usuario users=conexion.selectUsuario(conexion.getConnection(),tx1.getText());
+        if(users.getUsuario().equalsIgnoreCase(Constants.PRUEBA)){
+            MetodosChangeWindow.alarm("el usuario no esta registrado");
+        }
+        else if(users.getRol().equalsIgnoreCase(Constants.EMPLE) && users.getContraseña().equalsIgnoreCase(tx2.getText()) && users.getDisponible()==Constants.ESTADO){
+            metodo.ChangeWindow("VentanaComprador", WindowLogin,"Customer");
+        }else if(users.getRol().equalsIgnoreCase(Constants.ADMIN) &&  users.getContraseña().equalsIgnoreCase(tx2.getText()) && users.getDisponible()==Constants.ESTADO){
+            metodo.ChangeWindow("VentanaVendedor", WindowLogin,"Seller");
+        }else{
+            metodo.alarm("el usuario o la contraseña estan incorrectas");
+        }
+    }
 }

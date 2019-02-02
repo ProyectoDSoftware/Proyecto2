@@ -5,8 +5,10 @@
  */
 package Modelo;
 
+import dsproyecto.MetodosChangeWindow;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import java.sql.SQLException;
@@ -38,7 +40,7 @@ public class Conexion {
             }
         } catch (ClassNotFoundException|SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-            this.alarm("Fallo la conexion a la base de datos");
+            MetodosChangeWindow.alarm("Fallo la conexion a la base de datos");
         }
     }
      public Connection getConnection(){
@@ -48,12 +50,6 @@ public class Conexion {
         conexion.close();
     }
 
-    private static void alarm(String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText("Mensaje de Informacion");
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
     
     public String selectArticuloMasBuscado(Connection conexion){
         String sql="Select * from ArticulosMasBuscados";
@@ -64,7 +60,7 @@ public class Conexion {
             }
         } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-            alarm("Ocurrio un problema con la conexion a la base de datos, reinicie aplicación");
+            MetodosChangeWindow.alarm("Ocurrio un problema con la conexion a la base de datos, reinicie aplicación");
         }
         return "";
     }
@@ -79,14 +75,29 @@ public class Conexion {
                 String pass=rs.getString("Passwords");
                 String rol=rs.getString("Rol");
                 int estado=rs.getInt("Estado");
-                Usuario user=new Usuario(rol, usuario, name, name, usuario, rol, rol, true, rol, rol);
+                Usuario user=new Usuario(rol, usuario, name, name, usuario, rol, rol, true, rol, rol, estado, estado);
                 return user;
             }
             
         } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-            this.alarm("Ocurrio un problema");
+            MetodosChangeWindow.alarm("Ocurrio un problema");
         } 
         return userPrueba;
+    }
+    
+    public void actualizarDataBaseUsuario(Connection conection,Usuario empleado){
+        String sql="call SP_ActualizarCliente('"+empleado.toString()+"');";
+        
+        try (PreparedStatement stmt=conection.prepareStatement(sql);){
+            int actualizar=stmt.executeUpdate(sql);
+            if(actualizar>0){
+                MetodosChangeWindow.alarm("Los datos han sido actualizados");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            MetodosChangeWindow.alarm("Ocurrio un problema");
+        }
+        
     }
 }

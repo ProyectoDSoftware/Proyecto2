@@ -60,7 +60,7 @@ public class Articulo {
 
     @Override
     public String toString() {
-        return  "nombre=" + nombre + ", categoria=" + categoria + ", calificacion=" + calificacion + ", tiempomaximo=" + tiempomaximo + ", precio=" + precio;
+        return  nombre + "," + categoria + "," + calificacion + "," + tiempomaximo + "," + precio;
     }
     
     

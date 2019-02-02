@@ -21,8 +21,10 @@ public class Usuario {
     protected String direccion;
     protected String cedula;
     protected double saldo;
+    protected int disponible;
+    
 
-    public Usuario(String rol, String usuario, String contraseña, String nombre, String apellido, String telefono, String email, boolean whassapt, String direccion, String cedula) {
+    public Usuario(String rol, String usuario, String contraseña, String nombre, String apellido, String telefono, String email, boolean whassapt, String direccion, String cedula, double saldo, int disponible) {
         this.rol = rol;
         this.usuario = usuario;
         this.contraseña = contraseña;
@@ -33,7 +35,10 @@ public class Usuario {
         this.whassapt = whassapt;
         this.direccion = direccion;
         this.cedula = cedula;
+        this.saldo = saldo;
+        this.disponible = disponible;
     }
+
 
     public Usuario(String username){
         this.usuario=username;
@@ -110,9 +115,33 @@ public class Usuario {
         this.cedula = cedula;
     }
 
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public int getDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(int disponible) {
+        this.disponible = disponible;
+    }
+
     @Override
     public String toString() {
-        return "rol=" + rol + ", usuario=" + usuario + ", contrase\u00f1a=" + contraseña + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono + ", email=" + email + ", whassapt=" + whassapt + ", direccion=" + direccion + ", cedula=" + cedula + ", saldo=" + saldo ;
+        return rol+","+usuario+","+contraseña+","+nombre+","+apellido+","+telefono+","+email+","+whassapt+","+direccion+","+cedula+","+saldo ;
     }
     
     
