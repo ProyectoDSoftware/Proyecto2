@@ -20,17 +20,20 @@ AND fechaEntrega LIKE '2018%' limit 10;
 
 -- consultar informacion de un usuario
 delimiter ||
-create procedure consultarUsuario(in id varchar(10))
+create procedure consultarUsuario(in id varchar(10),out nomRol varchar(15), out usr varchar(20), out pasw varchar(20), out nom varchar(20), out apel varchar(20), out phon int, out mail varchar(30), out ws boolean, out adre varchar(30), out idU varchar(10))
 begin
-	select * from Usuario JOIN Rol on rol = idRol where cedula = id;
+	select nombreRol, usuario, passwd, nombre, apellido, telefono, email, whatsapp, direccion, cedula 
+    into nomRol, usr, pasw, nom, apel, phon, mail, ws, adre, idU 
+    from Usuario JOIN Rol on rol = idRol where cedula = id;
 end ||
 delimiter ;
 
 -- consultar articulo por su nombre
 delimiter ||
-create procedure consultarArticulo(in nombArt varchar(20))
+create procedure consultarArticulo(in nombArt varchar(20), out nom varchar(20), out cat varchar(20), out cal decimal(5,2), out fecha date, out cost decimal(5,2))
 begin
-	select * from Articulo where nombre like '%nombArt%';
+	select nombre, categoria, rateProm, tiempoMaximo, precio 
+    into nom, cat, cal, fecha, cost from Articulo where nombre like '%nombArt%';
 end ||
 delimiter ;
 
@@ -60,10 +63,9 @@ delimiter ;
 
 -- encontrar los pedidos pendientes de un comprador.
 delimiter ||
-create procedure pedidosPendientes (in id varchar(10))
+create procedure pedidosPendientes (in id varchar(10), out cost decimal(5,2), out state varchar(10), out fecha date)
 begin
-select *
-from pedido p, usuario u, comprador c
+select costoTotal, estado, fechaEntrega into cost, state, fecha from pedido p, usuario u, comprador c
 where u.cedula = c.idUser and c.idComprador = p.compr and p.estado = 'pendiente' and u.cedula = id;
 end ||
 delimiter ;
@@ -112,17 +114,17 @@ delimiter ;
 
 -- metodo para conocer los pedidos pendientes de un comprador (idcompra)
 delimiter ||
-create procedure conocerPedidosPendientes(IN idcompra int)
+create procedure conocerPedidosPendientes(IN idcompra int, out estad varchar(10), out fecha date, out costo decimal(5,2))
 begin
-select * from Pedido 
+select estado, fechaEntrega, costoTotal into estad, fecha, costo from Pedido 
 where compr = idcompra and estado = 'pendiente';
 end ||
 delimiter ;
 
 delimiter ||
-create procedure conocerVentasPorVendedor(in idVende int)
+create procedure conocerVentasPorVendedor(in idVende int, out state varchar(10), out place varchar(20))
 begin
-select * from Venta
-where vend = idVende;
+select estado, lugarEntrega into state, place 
+from Venta where vend = idVende;
 end ||
 delimiter ;
