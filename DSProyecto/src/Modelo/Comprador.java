@@ -9,6 +9,17 @@ package Modelo;
  *
  * @author Usuario
  */
-public class Comprador {
+public class Comprador extends Usuario{
+    
+    public Comprador(String rol, String usuario, String contraseña, String nombre, String apellido, String telefono, String email, boolean whassapt, String direccion, String cedula) {
+        super("comprador", usuario, contraseña, nombre, apellido, telefono, email, whassapt, direccion, cedula);
+    }
+
+    @Override
+    public String toString() {
+        return "Comprador{" + '}';
+    }
+    
+    
     
 }

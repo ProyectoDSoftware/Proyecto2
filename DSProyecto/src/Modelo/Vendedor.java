@@ -9,6 +9,10 @@ package Modelo;
  *
  * @author Usuario
  */
-public class Vendedor {
+public class Vendedor extends Usuario{
+    
+    public Vendedor(String rol, String usuario, String contraseña, String nombre, String apellido, String telefono, String email, boolean whassapt, String direccion, String cedula) {
+        super("vendedor", usuario, contraseña, nombre, apellido, telefono, email, whassapt, direccion, cedula);
+    }
     
 }

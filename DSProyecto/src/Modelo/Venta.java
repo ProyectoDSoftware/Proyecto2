@@ -15,5 +15,35 @@ public class Venta {
     protected List<Pedido>pedido;
     protected String Estado;
     protected String lugarDeEntrega;
+
+    public List<Pedido> getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(List<Pedido> pedido) {
+        this.pedido = pedido;
+    }
+
+    public String getEstado() {
+        return Estado;
+    }
+
+    public void setEstado(String Estado) {
+        this.Estado = Estado;
+    }
+
+    public String getLugarDeEntrega() {
+        return lugarDeEntrega;
+    }
+
+    public void setLugarDeEntrega(String lugarDeEntrega) {
+        this.lugarDeEntrega = lugarDeEntrega;
+    }
+
+    @Override
+    public String toString() {
+        return "pedido=" + pedido + ", Estado=" + Estado + ", lugarDeEntrega=" + lugarDeEntrega;
+    }
+    
     
 }

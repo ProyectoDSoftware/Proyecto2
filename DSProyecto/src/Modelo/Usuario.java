@@ -109,6 +109,11 @@ public class Usuario {
     public void setCedula(String cedula) {
         this.cedula = cedula;
     }
+
+    @Override
+    public String toString() {
+        return "rol=" + rol + ", usuario=" + usuario + ", contrase\u00f1a=" + contraseña + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono + ", email=" + email + ", whassapt=" + whassapt + ", direccion=" + direccion + ", cedula=" + cedula + ", saldo=" + saldo ;
+    }
     
     
     
