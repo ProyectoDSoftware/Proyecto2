@@ -20,19 +20,17 @@ AND fechaEntrega LIKE '2018%' limit 10;
 
 -- consultar informacion de un usuario
 delimiter ||
-create procedure consultarUsuario(in id varchar(10), out nmb varchar(20), out rl varchar(15), out apl varchar(20), out tel int, out dir varchar(30) )
+create procedure consultarUsuario(in id varchar(10))
 begin
-	select nombre, apellido, telefono, direccion, nombreRol into 
-    nmb, apl, tel, dir, rl from Usuario JOIN Rol on rol = idRol where cedula = id;
+	select * from Usuario JOIN Rol on rol = idRol where cedula = id;
 end ||
 delimiter ;
 
 -- consultar articulo por su nombre
 delimiter ||
-create procedure consultarArticulo(in nombArt varchar(20), out cod int, out nb varchar(20), out dat date, out costo decimal(5,2))
+create procedure consultarArticulo(in nombArt varchar(20))
 begin
-	select idArticulo, nombre, categoria, tiempoMaximo, precio into 
-    cod, nb, dat, costo from Articulo where nombre like '%nombArt%';
+	select * from Articulo where nombre like '%nombArt%';
 end ||
 delimiter ;
 
@@ -62,10 +60,9 @@ delimiter ;
 
 -- encontrar los pedidos pendientes de un comprador.
 delimiter ||
-create procedure pedidosPendientes (in id varchar(10), out cod int, out state varchar(10), out dat date, out total decimal(5,2), out nmb varchar(20))
+create procedure pedidosPendientes (in id varchar(10))
 begin
-select p.idPedido, p.estado, p.fechaEntrega, p.costoTotal, u.nombre 
-into cod, state, dat, total, nmb
+select *
 from pedido p, usuario u, comprador c
 where u.cedula = c.idUser and c.idComprador = p.compr and p.estado = 'pendiente' and u.cedula = id;
 end ||
@@ -117,7 +114,7 @@ delimiter ;
 delimiter ||
 create procedure conocerPedidosPendientes(IN idcompra int)
 begin
-select idPedido, fechaEntrega, costoTotal, vend from Pedido 
+select * from Pedido 
 where compr = idcompra and estado = 'pendiente';
 end ||
 delimiter ;
@@ -125,7 +122,7 @@ delimiter ;
 delimiter ||
 create procedure conocerVentasPorVendedor(in idVende int)
 begin
-select idVenta, estado, lugarEntrega, pedid, formaPago from Venta
+select * from Venta
 where vend = idVende;
 end ||
 delimiter ;
