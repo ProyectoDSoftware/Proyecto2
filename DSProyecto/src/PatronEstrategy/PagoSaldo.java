@@ -5,7 +5,11 @@
  */
 package PatronEstrategy;
 
+
+import Modelo.Conexion;
 import Modelo.Pedido;
+import dsproyecto.MetodosChangeWindow;
+import java.sql.Connection;
 
 /**
  *
@@ -15,7 +19,13 @@ public class PagoSaldo implements PagoEstrategy{
 
     @Override
     public void pagar(Pedido pedido) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        /*
+        if(4<pedido.getCosto()){
+            MetodosChangeWindow.alarm("el saldo es menor al actual, no se puede ejecutar dicha operación");
+        }else{
+            comprador.setSaldo(comprador.getSaldo-pedido.getCosto());
+            conexion.actualizarDataBaseUsuario(conexion, comprador);
+        }*/
     }
     
 }

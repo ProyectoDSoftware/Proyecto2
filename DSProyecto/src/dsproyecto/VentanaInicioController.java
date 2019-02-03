@@ -5,6 +5,7 @@
  */
 package dsproyecto;
 
+import Modelo.Conexion;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -29,16 +31,20 @@ public class VentanaInicioController implements Initializable {
     @FXML
     private Button reg;
 
-    private Parent ventlog,ventreg;
-    private Stage stagelog,stagereg;
+    @FXML
+    private AnchorPane PaneInit;
+    
+    private Conexion conexion;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        conexion=new Conexion();
+        MetodosChangeWindow metodo = new MetodosChangeWindow();
         log.setOnAction((ActionEvent event) -> {
             try {
-                getVentLogin();
+                metodo.getVent("VentanaSesion", "Login");
             } catch (IOException ex) {
                 System.out.println("Error en applicacion intente de nuevo u otra acción");
             }
@@ -46,24 +52,11 @@ public class VentanaInicioController implements Initializable {
         
         reg.setOnAction((ActionEvent event) -> {
             try {
-                getVentRegistro();
+                metodo.getVent("VentanaRegistro", "Register");
             } catch (IOException ex) {
                 System.out.println("Error en applicacion intente de nuevo u otra acción");
             }
         });
     }    
-    
-    public void getVentLogin() throws IOException {
-        stagelog = new Stage();
-        ventlog = FXMLLoader.load(getClass().getResource("VentanaSesion.fxml"));
-        stagelog.setScene(new Scene(ventlog));
-        stagelog.show();
-    }
-    
-    public void getVentRegistro() throws IOException {
-        stagereg = new Stage();
-        ventreg = FXMLLoader.load(getClass().getResource("VentanaRegistro.fxml"));
-        stagereg.setScene(new Scene(ventreg));
-        stagereg.show();
-    }
+ 
 }

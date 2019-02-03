@@ -125,3 +125,23 @@ insert into vendedor_articulo values
 (201,9,19),
 (202,10,16),
 (201,11,14);
+
+create user 'eduatigs' identified by 'admi';
+create user 'hmaticu' identified by 'vend';
+create user 'loresp' identified by 'vend';
+create user 'alvfue' identified by 'comp';
+create user 'luisvil' identified by 'comp';
+
+grant select, insert, update on poliventas.Pedido to 'alvfue';
+grant select, insert,  update on poliventas.Pedido to 'luisvil';
+
+grant select, insert, update on poliventas.Pedido to 'hmaticu';
+grant select, insert,  update on poliventas.Pedido to 'loresp';
+grant select, insert, update on poliventas.Articulo to 'hmaticu';
+grant select, insert, update on poliventas.Articulo to 'loresp';
+grant select, insert, update on poliventas.Venta to 'hmaticu';
+grant select, insert, update on poliventas.Venta to 'loresp';
+
+grant select, insert, update on poliventas.Usuario to 'eduatigs';
+grant select, insert, update on poliventas.Articulo to 'eduatigs';
+grant select, insert, update on poliventas.Pedido to 'eduatigs';

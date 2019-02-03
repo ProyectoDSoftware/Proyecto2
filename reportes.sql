@@ -20,19 +20,20 @@ AND fechaEntrega LIKE '2018%' limit 10;
 
 -- consultar informacion de un usuario
 delimiter ||
-create procedure consultarUsuario(in id varchar(10), out nmb varchar(20), out apl varchar(20), out tel int, out dir varchar(30) )
+create procedure consultarUsuario(in id varchar(10),out nomRol varchar(15), out usr varchar(20), out pasw varchar(20), out nom varchar(20), out apel varchar(20), out phon int, out mail varchar(30), out ws boolean, out adre varchar(30), out idU varchar(10))
 begin
-	select nombre, apellido, telefono, direccion into 
-    nmb, apl, tel, dir from Usuario where cedula = id;
+	select nombreRol, usuario, passwd, nombre, apellido, telefono, email, whatsapp, direccion, cedula 
+    into nomRol, usr, pasw, nom, apel, phon, mail, ws, adre, idU 
+    from Usuario JOIN Rol on rol = idRol where cedula = id;
 end ||
 delimiter ;
 
 -- consultar articulo por su nombre
 delimiter ||
-create procedure consultarArticulo(in nombArt varchar(20), out cod int, out nb varchar(20), out dat date, out costo decimal(5,2))
+create procedure consultarArticulo(in nombArt varchar(20), out nom varchar(20), out cat varchar(20), out cal decimal(5,2), out fecha date, out cost decimal(5,2))
 begin
-	select idArticulo, nombre, categoria, tiempoMaximo, precio into 
-    cod, nb, dat, costo from Articulo where nombre like '%nombArt%';
+	select nombre, categoria, rateProm, tiempoMaximo, precio 
+    into nom, cat, cal, fecha, cost from Articulo where nombre like '%nombArt%';
 end ||
 delimiter ;
 
@@ -62,11 +63,9 @@ delimiter ;
 
 -- encontrar los pedidos pendientes de un comprador.
 delimiter ||
-create procedure pedidosPendientes (in id varchar(10), out cod int, out state varchar(10), out dat date, out total decimal(5,2), out nmb varchar(20))
+create procedure pedidosPendientes (in id varchar(10), out cost decimal(5,2), out state varchar(10), out fecha date)
 begin
-select p.idPedido, p.estado, p.fechaEntrega, p.costoTotal, u.nombre 
-into cod, state, dat, total, nmb
-from pedido p, usuario u, comprador c
+select costoTotal, estado, fechaEntrega into cost, state, fecha from pedido p, usuario u, comprador c
 where u.cedula = c.idUser and c.idComprador = p.compr and p.estado = 'pendiente' and u.cedula = id;
 end ||
 delimiter ;
@@ -110,5 +109,22 @@ begin
 update Articulo rateProm set rateProm = (select avg(cantidad) from calificacion join Calificacion_Articulo on idc=rate where art = id)
 where idArticulo=id;
 
+end ||
+delimiter ;
+
+-- metodo para conocer los pedidos pendientes de un comprador (idcompra)
+delimiter ||
+create procedure conocerPedidosPendientes(IN idcompra int, out estad varchar(10), out fecha date, out costo decimal(5,2))
+begin
+select estado, fechaEntrega, costoTotal into estad, fecha, costo from Pedido 
+where compr = idcompra and estado = 'pendiente';
+end ||
+delimiter ;
+
+delimiter ||
+create procedure conocerVentasPorVendedor(in idVende int, out state varchar(10), out place varchar(20))
+begin
+select estado, lugarEntrega into state, place 
+from Venta where vend = idVende;
 end ||
 delimiter ;
