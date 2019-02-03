@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,17 +27,16 @@ import javafx.scene.control.Alert;
  */
 public class Conexion {
     private Connection conexion;
-    private final String driver ="com.mysql.jdbc.Driver";
+     private final String driver ="com.mysql.jdbc.Driver";
     private final String usuario ="hmaticur";
     private final String password ="ZXKFDLRFPL0";
     private final String url ="jdbc:mysql://127.0.0.1:3306/poliventas";
     public Conexion(){
          conexion=null;
-         boolean EstaConectado=conexion!=null;
         try {
             Class.forName(driver);
             conexion=DriverManager.getConnection(url,usuario,password);
-            if(EstaConectado){
+            if(conexion !=null){
                 System.out.println("Conexion exitosa");
             }
         } catch (ClassNotFoundException|SQLException ex) {
@@ -52,31 +52,29 @@ public class Conexion {
     }
 
     
-    public String selectArticuloMasBuscado(Connection conexion){
-        String sql="Select * from ArticulosMasBuscados";
+    public ArrayList<Articulo> selectArticuloMasBuscado(Connection conexion,String tipo){
+        ArrayList<Articulo>nuevo=new ArrayList<>();
+        String sql="Select * from "+tipo+";";
         try (Statement stmt=conexion.createStatement() ;
             ResultSet rs=stmt.executeQuery(sql);){
             while (rs.next()) {
-                return rs.getString("nombre");
+                Articulo art=new Articulo(rs.getString("nombre"), rs.getString("categoria"),rs.getDouble("rateProm"),rs.getDate("tiempoMaxima"), rs.getDouble("precio"));
+                nuevo.add(art);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             MetodosChangeWindow.alarm("Ocurrio un problema con la conexion a la base de datos, reinicie aplicación");
         }
-        return "No se pudo obtener el articulo mas buscado";
+        return nuevo;
     }
+
     public Usuario selectUsuario(Connection conexion,String username){
         Usuario userPrueba=new Usuario(Constants.PRUEBA);  
         String sql="call SP_SeleccionarUsuario('"+username+"');";
         try ( Statement stmt=conexion.createStatement();
             ResultSet rs=stmt.executeQuery(sql);){
             while(rs.next()){
-                int id=rs.getInt("Iduser");
-                String name=rs.getString("Username");
-                String pass=rs.getString("Passwords");
-                String rol=rs.getString("Rol");
-                int estado=rs.getInt("Estado");
-                Usuario user=new Usuario(rol, usuario, name, name, usuario, rol, rol, true, rol, rol, estado, estado);
+                Usuario user=new Usuario(rs.getString("nombrerol"), rs.getString("usuario"),rs.getString("passwd"),rs.getString("nombre"),rs.getString("apellido"), rs.getString("telefono"),rs.getString("email"), rs.getBoolean("whatsapp"), rs.getString("direccion"), rs.getString("cedula"), rs.getInt("disponible"));
                 return user;
             }
             
@@ -87,13 +85,25 @@ public class Conexion {
         return userPrueba;
     }
     
+        public void insertDataBaseUser(Connection conexion,String valores){
+        String sql="call SP_IngresarEmpleado('"+valores+"');";
+        try (PreparedStatement stmt=conexion.prepareStatement(sql);){
+            int ingreso=stmt.executeUpdate();
+            if(ingreso>0){
+                MetodosChangeWindow.alarm("Se ha ingresado correctamente los datos");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            MetodosChangeWindow.alarm("Ocurrio un problema");
+        }
+    }
     public void actualizarDataBaseUsuario(Connection conection,Usuario empleado){
         String sql="call SP_ActualizarCliente('"+empleado.toString()+"');";
         
         try (PreparedStatement stmt=conection.prepareStatement(sql);){
             int actualizar=stmt.executeUpdate(sql);
-            boolean EstaActualizado= actualizar>0;
-            if(EstaActualizado){
+            if(actualizar>0){
                 MetodosChangeWindow.alarm("Los datos han sido actualizados");
             }
         } catch (SQLException ex) {
@@ -102,26 +112,4 @@ public class Conexion {
         }
         
     }
-    
-    
-    /*
-    Crear un nuevo usuario en la bd (mysql.user) Correr el sgte codigo en la base de datos  
-“GRANT ALL ON . to user@'%'IDENTIFIED BY '';
-
-Abrir el puerto 3306 en la maquina donde esta instalada la base de datos 
-  Control Panel -> 
-  Windows Firewall -> 
-  Advance Settings -> 
-  Inbound Rules -> 
-  New Rule -> 
-  Port ->
-  Next -> 
-  TCP & set port as 3306 ->
-  Next -> 
-  Next ->
-  Next ->
-  Fill Name and Description ->
-  Finish ->
-
-    */
 }

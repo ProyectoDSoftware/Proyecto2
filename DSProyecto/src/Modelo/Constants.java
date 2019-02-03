@@ -12,8 +12,9 @@ package Modelo;
 public class Constants {
 
     final public static String ADMIN="administrador";
-    final public static String EMPLE="empleado";
+    final public static String VENDE="vendedor";
     final public static String PRUEBA="prueba";
+    final public static String COMPRA="comprador";
     final public static int ESTADO=1;
     final public static String H="Masculino";
     final public static String F="Femenino";

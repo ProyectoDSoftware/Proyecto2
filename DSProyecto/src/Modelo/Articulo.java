@@ -14,9 +14,17 @@ import java.util.Date;
 public class Articulo {
     protected String nombre;
     protected String categoria;
-    protected int calificacion;
+    protected double calificacion;
     protected Date tiempomaximo; 
     protected double precio;
+
+    public Articulo(String nombre, String categoria, double calificacion, Date tiempomaximo, double precio) {
+        this.nombre = nombre;
+        this.categoria = categoria;
+        this.calificacion = calificacion;
+        this.tiempomaximo = tiempomaximo;
+        this.precio = precio;
+    }
 
     public String getNombre() {
         return nombre;
@@ -34,11 +42,11 @@ public class Articulo {
         this.categoria = categoria;
     }
 
-    public int getCalificacion() {
+    public double getCalificacion() {
         return calificacion;
     }
 
-    public void setCalificacion(int calificacion) {
+    public void setCalificacion(double calificacion) {
         this.calificacion = calificacion;
     }
 

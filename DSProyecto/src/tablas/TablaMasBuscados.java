@@ -18,31 +18,26 @@ import javafx.scene.control.cell.TextFieldTableCell;
  *
  * @author Usuario
  */
-public class TablaArticulo {
-    private TableView<Articulo> tablaArticulo;
+public class TablaMasBuscados {
+    private final TableView<Articulo> tablaArticulo;
     
     private TableColumn<Articulo,String> nombre;
-    private TableColumn<Articulo,String> categoria;
-    private TableColumn<Articulo,Integer> calificacion;
     private TableColumn<Articulo,Double> precio;
 
     private ObservableList<Articulo> datos;
-    public TablaArticulo(){
-        tablaArticulo=new TableView();
+    public TablaMasBuscados(TableView<Articulo>tabla){
+        this.tablaArticulo=tabla;
         tablaArticulo.setEditable(true);
         setColumnas();
     }
+
     private void setColumnas(){
         nombre=new TableColumn("Nombre");
         nombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         nombre.setCellFactory(TextFieldTableCell.forTableColumn());
-        categoria=new TableColumn("Categoría");
-        categoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
-        calificacion=new TableColumn("Calificación");
-        calificacion.setCellValueFactory(new PropertyValueFactory<>("calificacion"));
         precio=new TableColumn("Precio");
         precio.setCellValueFactory(new PropertyValueFactory<>("precio"));
-        tablaArticulo.getColumns().addAll(nombre,categoria,calificacion,precio);
+        tablaArticulo.getColumns().addAll(nombre,precio);
     }
     public void setInicializar(ArrayList<Articulo> articulos){
         datos=FXCollections.observableArrayList(articulos);

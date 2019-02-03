@@ -11,9 +11,11 @@ package Modelo;
  */
 public class Vendedor extends Usuario{
     
-    public Vendedor(String rol, String usuario, String contraseña, String nombre, String apellido, String telefono, String email, boolean whassapt, String direccion, String cedula, double saldo, int disponible) {
-        super("vendedor", usuario, contraseña, nombre, apellido, telefono, email, whassapt, direccion, cedula, saldo, disponible);
+    public Vendedor(String rol, String usuario, String contraseña, String nombre, String apellido, String telefono, String email, boolean whassapt, String direccion, String cedula, int disponible) {
+        super(rol, usuario, contraseña, nombre, apellido, telefono, email, whassapt, direccion, cedula, disponible);
     }
+    
+
     
 
     
