@@ -52,4 +52,26 @@ public class Conexion {
         alert.setContentText(message);
         alert.showAndWait();
     }
+    
+    
+    /*
+    Crear un nuevo usuario en la bd (mysql.user) Correr el sgte codigo en la base de datos  
+“GRANT ALL ON . to user@'%'IDENTIFIED BY '';
+
+Abrir el puerto 3306 en la maquina donde esta instalada la base de datos 
+  Control Panel -> 
+  Windows Firewall -> 
+  Advance Settings -> 
+  Inbound Rules -> 
+  New Rule -> 
+  Port ->
+  Next -> 
+  TCP & set port as 3306 ->
+  Next -> 
+  Next ->
+  Next ->
+  Fill Name and Description ->
+  Finish ->
+
+    */
 }
