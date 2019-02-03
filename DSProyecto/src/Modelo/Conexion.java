@@ -26,16 +26,17 @@ import javafx.scene.control.Alert;
  */
 public class Conexion {
     private Connection conexion;
-     private final String driver ="com.mysql.jdbc.Driver";
+    private final String driver ="com.mysql.jdbc.Driver";
     private final String usuario ="hmaticur";
     private final String password ="ZXKFDLRFPL0";
     private final String url ="jdbc:mysql://127.0.0.1:3306/poliventas";
     public Conexion(){
          conexion=null;
+         boolean EstaConectado=conexion!=null;
         try {
             Class.forName(driver);
             conexion=DriverManager.getConnection(url,usuario,password);
-            if(conexion !=null){
+            if(EstaConectado){
                 System.out.println("Conexion exitosa");
             }
         } catch (ClassNotFoundException|SQLException ex) {
@@ -62,7 +63,7 @@ public class Conexion {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             MetodosChangeWindow.alarm("Ocurrio un problema con la conexion a la base de datos, reinicie aplicación");
         }
-        return "";
+        return "No se pudo obtener el articulo mas buscado";
     }
     public Usuario selectUsuario(Connection conexion,String username){
         Usuario userPrueba=new Usuario(Constants.PRUEBA);  
@@ -91,7 +92,8 @@ public class Conexion {
         
         try (PreparedStatement stmt=conection.prepareStatement(sql);){
             int actualizar=stmt.executeUpdate(sql);
-            if(actualizar>0){
+            boolean EstaActualizado= actualizar>0;
+            if(EstaActualizado){
                 MetodosChangeWindow.alarm("Los datos han sido actualizados");
             }
         } catch (SQLException ex) {

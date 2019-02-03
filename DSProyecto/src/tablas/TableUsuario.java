@@ -37,41 +37,66 @@ public class TableUsuario {
         setColumnas();
     }
     private void setColumnas(){
-        nombre=new TableColumn("Nombre");
-        nombre.setMinWidth(100);
-        nombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        nombre.setCellFactory(TextFieldTableCell.forTableColumn());
-        apellido=new TableColumn("Apellido");
-        apellido.setMinWidth(100);
-        apellido.setCellValueFactory(new PropertyValueFactory<>("apellido"));
-        telefono=new TableColumn("Teléfono");
-        telefono.setMinWidth(100);
-        telefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
-        saldo=new TableColumn("Saldo");
-        saldo.setMinWidth(100);
-        saldo.setCellValueFactory(new PropertyValueFactory<>("saldo"));
-        rol=new TableColumn("Rol");
-        rol.setMinWidth(100);
-        rol.setCellValueFactory(new PropertyValueFactory<>("rol"));
-        email=new TableColumn("Email");
-        email.setMinWidth(100);
-        email.setCellValueFactory(new PropertyValueFactory<>("email"));
-        direccion=new TableColumn("Dirección");
-        direccion.setMinWidth(100);
-        direccion.setCellValueFactory(new PropertyValueFactory<>("direccion"));
-        cedula=new TableColumn("Cédula");
-        cedula.setMinWidth(100);
-        cedula.setCellValueFactory(new PropertyValueFactory<>("cedula"));
-        tablaUsuario.getColumns().addAll(nombre,apellido,cedula,telefono,direccion,email,rol,saldo);
+        tablaUsuario.getColumns().addAll(crearTablaNombre(),crearTablaApellido(),crearTablaCedula(),crearTablaTelefono(),crearTablaDireccion(),crearTablaEmail(),crearTablaRol(),crearTablaSaldo());
     }
     public void setInicializar(ArrayList<Usuario> empleado){
-        datos=FXCollections.observableArrayList(empleado);
-        tablaUsuario.setItems(datos);
+        tablaUsuario.setItems(FXCollections.observableArrayList(empleado));
     }
     public TableView<Usuario> getTable(){
         return tablaUsuario;
     }
    
+    public TableColumn crearTablaNombre() {
+        nombre=new TableColumn("Nombre");
+        nombre.setMinWidth(100);
+        nombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        nombre.setCellFactory(TextFieldTableCell.forTableColumn());
+        return nombre;
+    }
+    public TableColumn crearTablaApellido() {
+        apellido=new TableColumn("Apellido");
+        apellido.setMinWidth(100);
+        apellido.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+        return apellido;
+    }
     
+     public TableColumn crearTablaTelefono() {
+        telefono=new TableColumn("Teléfono");
+        telefono.setMinWidth(100);
+        telefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
+        return telefono;
+    }
+      public TableColumn crearTablaSaldo() {
+        saldo=new TableColumn("Saldo");
+        saldo.setMinWidth(100);
+        saldo.setCellValueFactory(new PropertyValueFactory<>("saldo"));
+        return saldo;
+    }
+       public TableColumn crearTablaRol() {
+        rol=new TableColumn("Rol");
+        rol.setMinWidth(100);
+        rol.setCellValueFactory(new PropertyValueFactory<>("rol"));
+        return rol;
+    }
+       public TableColumn crearTablaEmail() {
+        email=new TableColumn("Email");
+        email.setMinWidth(100);
+        email.setCellValueFactory(new PropertyValueFactory<>("email"));
+        return email;
+    }
+       
+       public TableColumn crearTablaDireccion() {
+        direccion=new TableColumn("Dirección");
+        direccion.setMinWidth(100);
+        direccion.setCellValueFactory(new PropertyValueFactory<>("direccion"));
+        return direccion;
+    }
+       public TableColumn crearTablaCedula() {
+        cedula=new TableColumn("Cédula");
+        cedula.setMinWidth(100);
+        cedula.setCellValueFactory(new PropertyValueFactory<>("cedula"));
+        return cedula;
+    }
+       
     
 }
