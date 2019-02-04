@@ -99,19 +99,5 @@ public class Conexion {
                 Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
                 MetodosChangeWindow.alarm("Ocurrio un problema");
             }
-    }
-    public void actualizarDataBaseUsuario(Connection conection,Usuario empleado){
-        String sql="call SP_ActualizarCliente('"+empleado.toString()+"');";
-        
-        try (PreparedStatement stmt=conection.prepareStatement(sql);){
-            int actualizar=stmt.executeUpdate(sql);
-            if(actualizar>0){
-                MetodosChangeWindow.alarm("Los datos han sido actualizados");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-            MetodosChangeWindow.alarm("Ocurrio un problema");
         }
-        
-    }
 }

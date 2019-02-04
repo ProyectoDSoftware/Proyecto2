@@ -3,9 +3,28 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuario/Desktop/Espol/7%20Semestre/Diseño%20de%20Software/proyec/Proyecto2/DSProyecto/src/dsproyecto/VentanaInicioController.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/Espol/7%20Semestre/Diseño%20de%20Software/proyec/Proyecto2/DSProyecto/src/dsproyecto/VentanaSesionController.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/Espol/7%20Semestre/Diseño%20de%20Software/proyec/Proyecto2/DSProyecto/src/Modelo/Conexion.java</file>
+            <file>file:/home/alvaro-pc/Documents/disenosoftware/proyecto2diseno/DSProyecto/src/Modelo/Venta.java</file>
+            <file>file:/home/alvaro-pc/Documents/disenosoftware/proyecto2diseno/DSProyecto/src/dsproyecto/VentanaCompradorController.java</file>
+            <file>file:/home/alvaro-pc/Documents/disenosoftware/proyecto2diseno/DSProyecto/src/tablas/TablaMasBuscados.java</file>
+            <file>file:/home/alvaro-pc/Documents/disenosoftware/proyecto2diseno/DSProyecto/src/PatronEstrategy/PagoSaldo.java</file>
+            <file>file:/home/alvaro-pc/Documents/disenosoftware/proyecto2diseno/DSProyecto/src/Modelo/Vendedor.java</file>
+            <file>file:/home/alvaro-pc/Documents/disenosoftware/proyecto2diseno/DSProyecto/src/tablas/TablaArticuloNuevo.java</file>
+            <file>file:/home/alvaro-pc/Documents/disenosoftware/proyecto2diseno/DSProyecto/src/Modelo/Administrador.java</file>
+            <file>file:/home/alvaro-pc/Documents/disenosoftware/proyecto2diseno/DSProyecto/src/PatronEstrategy/PagoTarjeta.java</file>
+            <file>file:/home/alvaro-pc/Documents/disenosoftware/proyecto2diseno/DSProyecto/src/dsproyecto/VentanaAdministradorController.java</file>
+            <file>file:/home/alvaro-pc/Documents/disenosoftware/proyecto2diseno/DSProyecto/src/PatronEstrategy/PagoEstrategy.java</file>
+            <file>file:/home/alvaro-pc/Documents/disenosoftware/proyecto2diseno/DSProyecto/src/dsproyecto/VentanaVendedorController.java</file>
+            <file>file:/home/alvaro-pc/Documents/disenosoftware/proyecto2diseno/DSProyecto/src/Modelo/Usuario.java</file>
+            <file>file:/home/alvaro-pc/Documents/disenosoftware/proyecto2diseno/DSProyecto/src/Modelo/Constants.java</file>
+            <file>file:/home/alvaro-pc/Documents/disenosoftware/proyecto2diseno/DSProyecto/src/tablas/TableUsuario.java</file>
+            <file>file:/home/alvaro-pc/Documents/disenosoftware/proyecto2diseno/DSProyecto/src/tablas/TablaArticulo.java</file>
+            <file>file:/home/alvaro-pc/Documents/disenosoftware/proyecto2diseno/DSProyecto/src/Modelo/Conexion.java</file>
+            <file>file:/home/alvaro-pc/Documents/disenosoftware/proyecto2diseno/DSProyecto/src/Modelo/Comprador.java</file>
+            <file>file:/home/alvaro-pc/Documents/disenosoftware/proyecto2diseno/DSProyecto/src/dsproyecto/VentanaArticuloController.java</file>
+            <file>file:/home/alvaro-pc/Documents/disenosoftware/proyecto2diseno/DSProyecto/src/Modelo/Articulo.java</file>
+            <file>file:/home/alvaro-pc/Documents/disenosoftware/proyecto2diseno/DSProyecto/src/Modelo/Pedido.java</file>
+            <file>file:/home/alvaro-pc/Documents/disenosoftware/proyecto2diseno/DSProyecto/src/dsproyecto/DSProyecto.java</file>
+            <file>file:/home/alvaro-pc/Documents/disenosoftware/proyecto2diseno/DSProyecto/src/dsproyecto/MetodosChangeWindow.java</file>
         </group>
     </open-files>
 </project-private>
