@@ -6,11 +6,11 @@ insert into Rol values
 (3,'Comprador');
 
 insert into usuario values 
-('0932162228','Eduardo','Tigse',967735014,true,'eduatigs@gmail.com','Duran','eduatigs','admi',1,1),
-('0968201528','Henry','Maticurema',968300512,true,'hmaticu@gmail.com','Alborada','hmaticu','vend',2,1),
-('0969842028','Lorena','Espinoza',912307522,true,'loresp@gmail.com','Brisas del rio','loresp','vend',2,1),
-('0923210424','Alvaro','De la Fuente',968421044,false,'alvfue@gmail.com','Orquideas','alvfue','comp',3,1),
-('0928650317','Luis','Villamar',968471032,false,'luisvil@gmail.com','Alborada','luisvil','comp',3,1);
+('0932162228','Eduardo','Tigse','0967735014',true,'eduatigs@gmail.com','Duran','eduatigs','admi',1,1),
+('0968201528','Henry','Maticurema','0968300512',true,'hmaticu@gmail.com','Alborada','hmaticu','vend',2,1),
+('0969842028','Lorena','Espinoza','0912307522',true,'loresp@gmail.com','Brisas del rio','loresp','vend',2,1),
+('0923210424','Alvaro','De la Fuente','0968421044',false,'alvfue@gmail.com','Orquideas','alvfue','comp',3,1),
+('0928650317','Luis','Villamar','0968471032',false,'luisvil@gmail.com','Alborada','luisvil','comp',3,1);
 
 insert into articulo values
 (1,'marcador','oficina','2018-12-12',12.50,2,3.5,1),

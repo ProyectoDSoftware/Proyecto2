@@ -30,8 +30,8 @@ public class TableUsuario {
     private TableColumn<Usuario,String> cedula;
 
     private ObservableList<Usuario> datos;
-    public TableUsuario(){
-        tablaUsuario=new TableView();
+    public TableUsuario(TableView<Usuario>tabla){
+        tablaUsuario=tabla;
         tablaUsuario.setEditable(true);
         setColumnas();
     }

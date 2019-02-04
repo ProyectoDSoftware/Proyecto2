@@ -10,9 +10,10 @@ WHERE p.fechaEntrega like '2018%'
 GROUP BY v.formaPago, v.vend
 ORDER BY p.fechaEntrega;
 
+
 -- articulos mas buscados 
 create view ArticulosMasBuscados as 
-select a.nombre 
+select a.nombre,a.precio,a.categoria,a.rateprom,a.tiempoMaxima
 from Articulo a JOIN pedido_articulo pa on pa.art = a.idArticulo
 JOIN Pedido p ON pa.pedid = p.idPedido 
 WHERE vecesBuscadas >= (select avg(vecesBuscadas) from Articulo) 
@@ -20,20 +21,28 @@ AND fechaEntrega LIKE '2018%' limit 10;
 
 -- consultar informacion de un usuario
 delimiter ||
-create procedure consultarUsuario(in id varchar(10),out nomRol varchar(15), out usr varchar(20), out pasw varchar(20), out nom varchar(20), out apel varchar(20), out phon int, out mail varchar(30), out ws boolean, out adre varchar(30), out idU varchar(10))
+create procedure consultarUsuario(in id varchar(10))
 begin
 	select nombreRol, usuario, passwd, nombre, apellido, telefono, email, whatsapp, direccion, cedula 
-    into nomRol, usr, pasw, nom, apel, phon, mail, ws, adre, idU 
-    from Usuario JOIN Rol on rol = idRol where cedula = id;
+    from Usuario JOIN Rol on rol = idRol where usuario = id;
+end ||
+delimiter ;
+
+-- consultar varios usuarios
+delimiter ||
+create procedure consultarUsuarios(in id varchar(10))
+begin
+	select nombreRol, usuario, passwd, nombre, apellido, telefono, email, whatsapp, direccion, cedula 
+    from Usuario JOIN Rol on rol = idRol where nombre like id;
 end ||
 delimiter ;
 
 -- consultar articulo por su nombre
 delimiter ||
-create procedure consultarArticulo(in nombArt varchar(20), out nom varchar(20), out cat varchar(20), out cal decimal(5,2), out fecha date, out cost decimal(5,2))
+create procedure consultarArticulo(in nombArt varchar(20))
 begin
 	select nombre, categoria, rateProm, tiempoMaximo, precio 
-    into nom, cat, cal, fecha, cost from Articulo where nombre like '%nombArt%';
+     from Articulo where nombre like '%nombArt%';
 end ||
 delimiter ;
 
@@ -72,7 +81,7 @@ delimiter ;
 
 -- crear un usuario nuevo
 delimiter ||
-create procedure crearUsuario(in id varchar(10), in nomb varchar(20), in apell varchar(20), in phone int, in ws boolean, in mail varchar(30), in address varchar(30), in username varchar(20), in passwd varchar(20), in rol int)
+create procedure crearUsuario(in id varchar(10), in nomb varchar(20), in apell varchar(20), in phone varchar(20), in ws boolean, in mail varchar(30), in address varchar(30), in username varchar(20), in passwd varchar(20), in rol int)
 begin
 
 insert into Usuario values(id,nomb,apell,phone,ws, mail,address,username,passwd,rol,1);

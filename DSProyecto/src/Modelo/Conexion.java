@@ -100,4 +100,36 @@ public class Conexion {
                 MetodosChangeWindow.alarm("Ocurrio un problema");
             }
         }
+        
+    public ArrayList<Usuario> getBuscarUsuarios(Connection conection, String nom) {
+        ArrayList<Usuario> nuevo = new ArrayList<>();
+        String sql = "call consultarUsuarios('" + nom + "%');";
+        try (Statement stmt = conection.createStatement();
+                ResultSet rs = stmt.executeQuery(sql);) {
+            while (rs.next()) {
+                Usuario user = new Usuario(rs.getString("nombrerol"), rs.getString("usuario"), rs.getString("passwd"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("telefono"), rs.getString("email"), rs.getBoolean("whatsapp"), rs.getString("direccion"), rs.getString("cedula"));
+                nuevo.add(user);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            MetodosChangeWindow.alarm("ocurrio un error");
+        }
+        return nuevo;
+    }
+    
+    public ArrayList<Articulo> getBuscarArticulos(Connection conection, String nom) {
+        ArrayList<Articulo> nuevo = new ArrayList<>();
+        String sql = "call consultarArticulo('" + nom + "%');";
+        try (Statement stmt = conection.createStatement();
+                ResultSet rs = stmt.executeQuery(sql);) {
+            while (rs.next()) {
+                Articulo art=new Articulo(rs.getString("nombre"), rs.getString("categoria"),rs.getDouble("rateProm"),rs.getDate("tiempoMaxima"), rs.getDouble("precio"));
+                nuevo.add(art);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            MetodosChangeWindow.alarm("ocurrio un error");
+        }
+        return nuevo;
+    }
 }

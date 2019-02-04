@@ -5,8 +5,12 @@
  */
 package dsproyecto;
 
+import Modelo.Articulo;
+import Modelo.Conexion;
+import Modelo.Usuario;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,8 +20,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import tablas.TablaArticulo;
+import tablas.TableUsuario;
 
 /**
  * FXML Controller class
@@ -41,36 +49,68 @@ public class VentanaAdministradorController implements Initializable {
     @FXML
     private Button newProduc;
 
-    private Stage stageNewUser, stageNewProduc;
-    private Parent ventNewUser, ventNewProduc;
     @FXML
     private AnchorPane AdminGeneral;
+    @FXML
+    private Button deleteUser;
+    @FXML
+    private Button modifUser;
+    @FXML
+    private Button btnsearch;
+    @FXML
+    private TableView<Usuario> tableUser;
+    @FXML
+    private Button deleteprod;
+    @FXML
+    private Button modifproduct;
+    @FXML
+    private TableView<Articulo> tableproduct;
+    
+    private Conexion conexion;
+    @FXML
+    private TextField txfnombre;
+    @FXML
+    private Button btnArticle;
+    @FXML
+    private TextField txfarticle;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        conexion=new Conexion();
+        MetodosChangeWindow metodo = new MetodosChangeWindow();
+        TableUsuario table=new TableUsuario(tableUser);
+        TablaArticulo tableart=new TablaArticulo(tableproduct);
         usuarios.setOnAction((ActionEvent event) -> {
             admiUser.setVisible(true);
             admiProd.setVisible(false);
         });
         
+        btnsearch.setOnAction((ActionEvent event)->{
+            ArrayList<Usuario> art=conexion.getBuscarUsuarios(conexion.getConnection(), txfnombre.getText());
+            table.setInicializar(art);
+        });
         articulos.setOnAction((ActionEvent event) -> {
             admiProd.setVisible(true);
             admiUser.setVisible(false);
         });
+        btnArticle.setOnAction((ActionEvent event)->{
+            ArrayList<Articulo> art=conexion.getBuscarArticulos(conexion.getConnection(), txfarticle.getText());
+            tableart.setInicializar(art);
+        });
         newUser.setOnAction((ActionEvent event) -> {
             try{
-                getVentRegisUser();
+                metodo.getVent("VentanaRegistro", "Register");
             }catch(IOException e){
-                System.out.println("No se puede abrir la ventana");
+                MetodosChangeWindow.alarm("No se puede abrir la ventana");
             }
         });
         newProduc.setOnAction((ActionEvent event) ->{
             try{
-                getVentRegisProduc();
+                metodo.getVent("VentanaArticulo", "Register Article");
             }catch(IOException e){
-                System.out.println("No se puede abrir la ventana");
+                MetodosChangeWindow.alarm("No se puede abrir la ventana");
             }
         });
         
@@ -78,20 +118,8 @@ public class VentanaAdministradorController implements Initializable {
             DSProyecto.getStage(AdminGeneral,"").close();
         });
     }
-
-    public void getVentRegisUser() throws IOException{
-        stageNewUser = new Stage();
-        stageNewUser.setTitle("Registro de Usuario");
-        ventNewUser = FXMLLoader.load(getClass().getResource("VentanaRegistro.fxml"));
-        stageNewUser.setScene(new Scene(ventNewUser));
-        stageNewUser.show();
-    }
-    
-    public void getVentRegisProduc() throws IOException{
-        stageNewProduc = new Stage();
-        stageNewProduc.setTitle("Registro de Articulo");
-        ventNewProduc = FXMLLoader.load(getClass().getResource("VentanaArticulo.fxml"));
-        stageNewProduc.setScene(new Scene(ventNewProduc));
-        stageNewProduc.show();
+   private void InicializarTableUser(TableView<Usuario>tabla,ArrayList<Usuario>art){
+        TableUsuario table=new TableUsuario(tabla);
+        table.setInicializar(art);
     }
 }

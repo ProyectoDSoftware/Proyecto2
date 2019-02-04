@@ -11,7 +11,7 @@ create table Usuario(
 cedula varchar(10) primary key,
 nombre varchar(20),
 apellido varchar(20),
-telefono int,
+telefono varchar(20),
 whatsapp boolean,
 email varchar(30),
 direccion varchar(30),
