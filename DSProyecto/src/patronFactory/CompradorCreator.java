@@ -5,10 +5,22 @@
  */
 package patronFactory;
 
+import java.util.ArrayList;
+import modelo.Comprador;
+import modelo.Pedido;
+import modelo.Usuario;
+
 /**
  *
  * @author alvaro-pc
  */
 public class CompradorCreator extends Creator {
+    
+    private ArrayList<Pedido>misPedidos;
+
+    @Override
+    Usuario crearUser() {
+        return new Comprador(misPedidos, "");   
+    }
     
 }

@@ -5,10 +5,18 @@
  */
 package patronFactory;
 
+import modelo.Administrador;
+import modelo.Usuario;
+
 /**
  *
  * @author alvaro-pc
  */
 public class AdministradorCreator extends Creator {
+
+    @Override
+    Usuario crearUser() {
+        return new Administrador();
+    }
     
 }

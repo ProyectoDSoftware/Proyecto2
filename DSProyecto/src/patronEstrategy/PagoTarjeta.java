@@ -5,6 +5,7 @@
  */
 package patronEstrategy;
 
+import dsproyecto.MetodosChangeWindow;
 import modelo.Pedido;
 import modelo.Usuario;
 
@@ -19,7 +20,11 @@ public class PagoTarjeta implements PagoEstrategy{
 
     @Override
     public void pagar(Pedido pedido) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(cantidad<pedido.getCosto()){
+            MetodosChangeWindow.alarm("No se puede hacer el pago");
+        }else{
+            cantidad-=pedido.getCosto();
+        }
     }
     
 }

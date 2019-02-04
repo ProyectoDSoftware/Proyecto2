@@ -1,1 +1,0 @@
-2src/dsproyecto/VentanaAdministradorController.java 2javaX~h

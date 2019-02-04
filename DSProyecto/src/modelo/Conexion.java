@@ -29,12 +29,9 @@ import javafx.scene.control.Alert;
 public class Conexion {
     private Connection conexion;
      private final String driver ="com.mysql.jdbc.Driver";
-    //private final String usuario ="hmaticur";
-    //private final String password ="ZXKFDLRFPL0";
-    private final String usuario ="root";
-    private final String password ="root";
-    //private final String url ="jdbc:mysql://127.0.0.1:3306/poliventas";
-    private final String url ="jdbc:mysql://192.188.59.85:3306/proyectods";
+    private final String usuario ="hmaticur";
+    private final String password ="ZXKFDLRFPL0";
+    private final String url ="jdbc:mysql://127.0.0.1:3306/poliventas";
     public Conexion(){
          conexion=null;
         try {

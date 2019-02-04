@@ -5,10 +5,18 @@
  */
 package patronFactory;
 
+import modelo.Usuario;
+import modelo.Vendedor;
+
 /**
  *
  * @author alvaro-pc
  */
 public class VendedorCreator extends Creator {
+
+    @Override
+    Usuario crearUser() {
+        return new Vendedor();
+    }
     
 }

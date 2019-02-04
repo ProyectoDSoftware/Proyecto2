@@ -41,8 +41,8 @@ delimiter ;
 delimiter ||
 create procedure consultarArticulo(in nombArt varchar(20))
 begin
-	select nombre, categoria, rateProm, tiempoMaximo, precio 
-     from Articulo where nombre like '%nombArt%';
+	select nombre, categoria, rateProm, tiempoMaxima, precio 
+     from Articulo where nombre like nombArt;
 end ||
 delimiter ;
 

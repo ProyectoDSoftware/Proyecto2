@@ -5,10 +5,13 @@
  */
 package patronFactory;
 
+import modelo.Usuario;
+
 /**
  *
  * @author alvaro-pc
  */
 public abstract class Creator {
+     abstract Usuario crearUser();
     
 }
