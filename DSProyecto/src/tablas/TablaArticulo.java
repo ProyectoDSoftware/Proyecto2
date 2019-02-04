@@ -19,7 +19,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
  * @author Usuario
  */
 public class TablaArticulo {
-    private TableView<Articulo> tablaArticulo;
+    private final TableView<Articulo> tablaArticulo;
     
     private TableColumn<Articulo,String> nombre;
     private TableColumn<Articulo,String> categoria;
@@ -27,8 +27,8 @@ public class TablaArticulo {
     private TableColumn<Articulo,Double> precio;
 
     private ObservableList<Articulo> datos;
-    public TablaArticulo(){
-        tablaArticulo=new TableView();
+    public TablaArticulo(TableView<Articulo>tabla){
+        tablaArticulo=tabla;
         tablaArticulo.setEditable(true);
         setColumnas();
     }

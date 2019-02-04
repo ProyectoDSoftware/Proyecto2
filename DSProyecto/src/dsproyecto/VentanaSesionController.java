@@ -64,31 +64,6 @@ public class VentanaSesionController implements Initializable {
             }else{
                 MetodosChangeWindow.alarm("Intente de nuevo");
             }
-            if(tx1.getText().equals("comprador") && tx2.getText().equals("compra")){
-                try{
-                    metodo.ChangeWindow("VentanaComprador", WindowLogin,"Customer");
-                    
-                }catch(IOException e){
-                    System.out.println("No se puede abrir la ventana");
-                }
-            }
-            else if(tx1.getText().equals("vendedor") && tx2.getText().equals("vende")){
-                try{
-                    metodo.ChangeWindow("VentanaVendedor", WindowLogin,"Seller");
-                }catch(IOException e){
-                    System.out.println("No se puede abrir la ventana");
-                }
-            }
-            else if(tx1.getText().equals("administra") && tx2.getText().equals("admi")){
-                try{
-                    metodo.ChangeWindow("VentanaAdministrador", WindowLogin,"Administrator");
-                }catch(IOException e){
-                    System.out.println("No se puede abrir la ventana");
-                }
-            }
-            else{
-                System.out.println("Usuario/Contraseña incorrecta");
-            }
         });
         
         regis.setOnAction((ActionEvent event) -> {
@@ -118,10 +93,12 @@ public class VentanaSesionController implements Initializable {
         if(users.getUsuario().equalsIgnoreCase(Constants.PRUEBA)){
             MetodosChangeWindow.alarm("el usuario no esta registrado");
         }
-        else if(users.getRol().equalsIgnoreCase(Constants.VENDE) && users.getContraseña().equalsIgnoreCase(tx2.getText())){
+        else if(users.getRol().equalsIgnoreCase(Constants.COMPRA) && users.getContraseña().equalsIgnoreCase(tx2.getText())){
             metodo.ChangeWindow("VentanaComprador", WindowLogin,"Customer");
-        }else if(users.getRol().equalsIgnoreCase(Constants.ADMIN) &&  users.getContraseña().equalsIgnoreCase(tx2.getText())){
+        }else if(users.getRol().equalsIgnoreCase(Constants.VENDE) &&  users.getContraseña().equalsIgnoreCase(tx2.getText())){
             metodo.ChangeWindow("VentanaVendedor", WindowLogin,"Seller");
+        }else if(users.getRol().equalsIgnoreCase(Constants.ADMIN) &&  users.getContraseña().equalsIgnoreCase(tx2.getText())){
+            metodo.ChangeWindow("VentanaAdministrador", WindowLogin,"Administrator");
         }else{
             metodo.alarm("el usuario o la contraseña estan incorrectas");
         }

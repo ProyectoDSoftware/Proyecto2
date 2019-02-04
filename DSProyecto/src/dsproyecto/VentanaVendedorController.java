@@ -5,8 +5,11 @@
  */
 package dsproyecto;
 
+import Modelo.Articulo;
+import Modelo.Conexion;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,9 +19,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import tablas.TablaArticulo;
+import tablas.TablaMasBuscados;
 
 /**
  * FXML Controller class
@@ -56,11 +62,15 @@ public class VentanaVendedorController implements Initializable {
     private Parent ventArticulo;
     @FXML
     private AnchorPane PaneSeller;
+    @FXML
+    private TableView<Articulo> tablearticulos;
+    private Conexion conexion;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        conexion=new Conexion();
         MetodosChangeWindow metodo=new MetodosChangeWindow();
         opcSimple.setOnAction((ActionEvent event) -> {
             search.setVisible(true);
@@ -84,6 +94,8 @@ public class VentanaVendedorController implements Initializable {
             articulos.setVisible(true);
             ventas.setVisible(false);
             productos.setVisible(false); 
+            ArrayList<Articulo> art=conexion.selectArticuloMasBuscado(conexion.getConnection(),"ArticulosMasBuscados");
+            InicializarTable(tablearticulos, art);
         });
         
         opcVenta.setOnAction((ActionEvent event) -> {
@@ -115,5 +127,8 @@ public class VentanaVendedorController implements Initializable {
         });
     }
   
-    
+    private void InicializarTable(TableView<Articulo>tabla,ArrayList<Articulo>art){
+        TablaArticulo table=new TablaArticulo(tabla);
+        table.setInicializar(art);
+    }
 }
