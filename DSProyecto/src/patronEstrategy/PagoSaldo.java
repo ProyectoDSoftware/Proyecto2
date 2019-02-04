@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PatronEstrategy;
+package patronEstrategy;
 
 
-import Modelo.Conexion;
-import Modelo.Pedido;
+import modelo.Conexion;
+import modelo.Pedido;
 import dsproyecto.MetodosChangeWindow;
 import java.sql.Connection;
 

@@ -5,8 +5,8 @@
  */
 package dsproyecto;
 
-import Modelo.Articulo;
-import Modelo.Conexion;
+import modelo.Articulo;
+import modelo.Conexion;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;

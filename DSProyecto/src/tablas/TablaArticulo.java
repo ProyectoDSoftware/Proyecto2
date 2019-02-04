@@ -5,7 +5,7 @@
  */
 package tablas;
 
-import Modelo.Articulo;
+import modelo.Articulo;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

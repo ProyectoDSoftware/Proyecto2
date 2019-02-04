@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package modelo;
 
 /**
  *
@@ -11,9 +11,11 @@ package Modelo;
  */
 public class Comprador extends Usuario{
 
-    public Comprador(String rol, String usuario, String contraseña, String nombre, String apellido, String telefono, String email, boolean whassapt, String direccion, String cedula) {
-        super(rol, usuario, contraseña, nombre, apellido, telefono, email, whassapt, direccion, cedula);
+    public Comprador() {
+        super(null);
     }
+
+   
 
 
     

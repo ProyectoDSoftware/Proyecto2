@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PatronEstrategy;
-
-import Modelo.Pedido;
+package patronObserver;
 
 /**
  *
- * @author Usuario
+ * @author alvaro-pc
  */
-public interface PagoEstrategy {
-    void pagar(Pedido pedido);
+public class NotificacionVendedor {
+    
 }

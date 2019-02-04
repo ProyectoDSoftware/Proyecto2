@@ -3,12 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PatronFactory;
+package modelo;
 
 /**
  *
- * @author alvaro-pc
+ * @author Usuario
  */
-public abstract class Creator {
+public class Vendedor extends Usuario{
+
+    public Vendedor() {
+        super(null);
+    }
+    
+ 
+    
+
+    
+
     
 }

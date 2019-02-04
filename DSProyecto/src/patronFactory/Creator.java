@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PatronFactory;
+package patronFactory;
 
 /**
  *
  * @author alvaro-pc
  */
-public class AdministradorCreator extends Creator {
+public abstract class Creator {
     
 }

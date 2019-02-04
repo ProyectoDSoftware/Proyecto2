@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PatronObserver;
+package patronFactory;
 
 /**
  *
  * @author alvaro-pc
  */
-public class PedidoObserver {
+public class CompradorCreator extends Creator {
     
 }

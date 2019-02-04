@@ -5,9 +5,9 @@
  */
 package dsproyecto;
 
-import Modelo.Conexion;
-import Modelo.Usuario;
-import Modelo.Constants;
+import modelo.Conexion;
+import modelo.Usuario;
+import modelo.Constants;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;

@@ -5,10 +5,10 @@
  */
 package dsproyecto;
 
-import Modelo.Articulo;
-import Modelo.Conexion;
-import Modelo.Constants;
-import Modelo.Usuario;
+import modelo.Articulo;
+import modelo.Conexion;
+import modelo.Constants;
+import modelo.Usuario;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
