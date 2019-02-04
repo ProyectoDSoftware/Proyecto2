@@ -1,0 +1,1 @@
+*src/tablas/TablaArticulo.java 2javaXEh

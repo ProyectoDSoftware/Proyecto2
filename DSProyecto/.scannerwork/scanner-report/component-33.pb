@@ -1,0 +1,1 @@
+!+src/PatronFactory/AdministradorCreator.java 2javaXh

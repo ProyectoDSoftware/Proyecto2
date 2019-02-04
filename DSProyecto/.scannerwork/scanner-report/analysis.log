@@ -1,0 +1,137 @@
+Environment variables:
+  - =::=::\
+  - =C:=C:\Users\Usuario\Desktop\Espol\7 Semestre\Diseño de Software\proyec\Proyecto2\DSProyecto
+  - ALLUSERSPROFILE=C:\ProgramData
+  - APPDATA=C:\Users\Usuario\AppData\Roaming
+  - COMPUTERNAME=LAPTOP-CASA
+  - ComSpec=C:\Windows\system32\cmd.exe
+  - CommonProgramFiles=C:\Program Files\Common Files
+  - CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files
+  - CommonProgramW6432=C:\Program Files\Common Files
+  - ERROR_CODE=0
+  - FP_NO_HOST_CHECK=NO
+  - HOMEDRIVE=C:
+  - HOMEPATH=\Users\Usuario
+  - JAVA_EXEC="C:\sonar-scanner-3.1.0.1141-windows\bin\..\jre\bin\java.exe"
+  - JAVA_HOME=C:\sonar-scanner-3.1.0.1141-windows\bin\..\jre
+  - LOCALAPPDATA=C:\Users\Usuario\AppData\Local
+  - LOGONSERVER=\\LAPTOP-CASA
+  - NUMBER_OF_PROCESSORS=2
+  - OS=Windows_NT
+  - PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW
+  - PROCESSOR_ARCHITECTURE=AMD64
+  - PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 76 Stepping 4, GenuineIntel
+  - PROCESSOR_LEVEL=6
+  - PROCESSOR_REVISION=4c04
+  - PROJECT_HOME=C:\Users\Usuario\Desktop\Espol\7 Semestre\Diseño de Software\proyec\Proyecto2\DSProyecto
+  - PROMPT=$P$G
+  - PSModulePath=C:\Windows\system32\WindowsPowerShell\v1.0\Modules\
+  - PUBLIC=C:\Users\Public
+  - Path=C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Ruby24-x64\bin;C:\sonar-scanner-3.1.0.1141-windows\bin
+  - ProgramData=C:\ProgramData
+  - ProgramFiles=C:\Program Files
+  - ProgramFiles(x86)=C:\Program Files (x86)
+  - ProgramW6432=C:\Program Files
+  - SESSIONNAME=Console
+  - SONAR_SCANNER_HOME=C:\sonar-scanner-3.1.0.1141-windows\bin\..
+  - SystemDrive=C:
+  - SystemRoot=C:\Windows
+  - TEMP=C:\Users\Usuario\AppData\Local\Temp
+  - TMP=C:\Users\Usuario\AppData\Local\Temp
+  - USERDOMAIN=laptop-casa
+  - USERNAME=Usuario
+  - USERPROFILE=C:\Users\Usuario
+  - VBOX_MSI_INSTALL_PATH=C:\Program Files\Oracle\VirtualBox\
+  - scriptdir=C:\sonar-scanner-3.1.0.1141-windows\bin
+  - use_embedded_jre=true
+  - windir=C:\Windows
+  - windows_tracing_flags=3
+  - windows_tracing_logfile=C:\BVTBin\Tests\installpackage\csilogfile.log
+System properties:
+  - awt.toolkit=sun.awt.windows.WToolkit
+  - file.encoding=Cp1252
+  - file.encoding.pkg=sun.io
+  - file.separator=\
+  - java.awt.graphicsenv=sun.awt.Win32GraphicsEnvironment
+  - java.awt.headless=true
+  - java.awt.printerjob=sun.awt.windows.WPrinterJob
+  - java.class.path=C:\sonar-scanner-3.1.0.1141-windows\bin\..\lib\sonar-scanner-cli-3.1.0.1141.jar
+  - java.class.version=52.0
+  - java.endorsed.dirs=C:\sonar-scanner-3.1.0.1141-windows\jre\lib\endorsed
+  - java.ext.dirs=C:\sonar-scanner-3.1.0.1141-windows\jre\lib\ext;C:\Windows\Sun\Java\lib\ext
+  - java.home=C:\sonar-scanner-3.1.0.1141-windows\jre
+  - java.io.tmpdir=C:\Users\Usuario\AppData\Local\Temp\
+  - java.library.path=C:\sonar-scanner-3.1.0.1141-windows\jre\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Ruby24-x64\bin;C:\sonar-scanner-3.1.0.1141-windows\bin;.
+  - java.runtime.name=Java(TM) SE Runtime Environment
+  - java.runtime.version=1.8.0_121-b13
+  - java.specification.name=Java Platform API Specification
+  - java.specification.vendor=Oracle Corporation
+  - java.specification.version=1.8
+  - java.vendor=Oracle Corporation
+  - java.vendor.url=http://java.oracle.com/
+  - java.vendor.url.bug=http://bugreport.sun.com/bugreport/
+  - java.version=1.8.0_121
+  - java.vm.info=mixed mode
+  - java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+  - java.vm.specification.name=Java Virtual Machine Specification
+  - java.vm.specification.vendor=Oracle Corporation
+  - java.vm.specification.version=1.8
+  - java.vm.vendor=Oracle Corporation
+  - java.vm.version=25.121-b13
+  - line.separator=
+
+  - os.arch=amd64
+  - os.name=Windows 7
+  - os.version=6.1
+  - path.separator=;
+  - project.home=C:\Users\Usuario\Desktop\Espol\7 Semestre\Diseño de Software\proyec\Proyecto2\DSProyecto
+  - scanner.home=C:\sonar-scanner-3.1.0.1141-windows\bin\..
+  - sun.arch.data.model=64
+  - sun.boot.class.path=C:\sonar-scanner-3.1.0.1141-windows\jre\lib\resources.jar;C:\sonar-scanner-3.1.0.1141-windows\jre\lib\rt.jar;C:\sonar-scanner-3.1.0.1141-windows\jre\lib\sunrsasign.jar;C:\sonar-scanner-3.1.0.1141-windows\jre\lib\jsse.jar;C:\sonar-scanner-3.1.0.1141-windows\jre\lib\jce.jar;C:\sonar-scanner-3.1.0.1141-windows\jre\lib\charsets.jar;C:\sonar-scanner-3.1.0.1141-windows\jre\lib\jfr.jar;C:\sonar-scanner-3.1.0.1141-windows\jre\classes
+  - sun.boot.library.path=C:\sonar-scanner-3.1.0.1141-windows\jre\bin
+  - sun.cpu.endian=little
+  - sun.cpu.isalist=amd64
+  - sun.desktop=windows
+  - sun.io.unicode.encoding=UnicodeLittle
+  - sun.java.command=org.sonarsource.scanner.cli.Main -X
+  - sun.java.launcher=SUN_STANDARD
+  - sun.jnu.encoding=Cp1252
+  - sun.management.compiler=HotSpot 64-Bit Tiered Compilers
+  - sun.os.patch.level=Service Pack 1
+  - sun.stderr.encoding=cp850
+  - sun.stdout.encoding=cp850
+  - user.country=EC
+  - user.dir=C:\Users\Usuario\Desktop\Espol\7 Semestre\Diseño de Software\proyec\Proyecto2\DSProyecto
+  - user.home=C:\Users\Usuario
+  - user.language=es
+  - user.name=Usuario
+  - user.script=
+  - user.timezone=America/Bogota
+  - user.variant=
+SonarQube plugins:
+  - SonarC# 6.5.0.3766 (csharp)
+  - SonarPython 1.8.0.1496 (python)
+  - SonarJava 4.15.0.12310 (java)
+  - Flex 2.3 (flex)
+  - SonarQube :: Plugins :: SCM :: Git 1.3.0.869 (scmgit)
+  - SonarXML 1.4.3.1027 (xml)
+  - SonarPHP 2.11.0.2485 (php)
+  - SonarTS 1.1.0.1079 (typescript)
+  - SonarQube :: Plugins :: SCM :: SVN 1.6.0.860 (scmsvn)
+  - SonarJS 3.2.0.5506 (javascript)
+Global properties:
+  - sonar.core.id=AWNDEmDYt9rDvRlgQjpC
+  - sonar.core.startTime=2019-02-04T02:22:55-0500
+Settings for module: my:project
+  - sonar.host.url=http://localhost:9000
+  - sonar.java.binaries=.
+  - sonar.my.property=value
+  - sonar.projectBaseDir=C:\Users\Usuario\Desktop\Espol\7 Semestre\Diseño de Software\proyec\Proyecto2\DSProyecto
+  - sonar.projectKey=my:project
+  - sonar.projectName=DSProyectosonar.projectVersion=1.0
+  - sonar.scanner.app=ScannerCli
+  - sonar.scanner.appVersion=3.1.0.1141
+  - sonar.sourceEncoding=UTF-8
+  - sonar.sources=src
+  - sonar.verbose=true
+  - sonar.working.directory=C:\Users\Usuario\Desktop\Espol\7 Semestre\Diseño de Software\proyec\Proyecto2\DSProyecto\.scannerwork
