@@ -6,7 +6,7 @@
 package dsproyecto;
 
 import Modelo.Articulo;
-import Modelo.Conexion;
+import Modelo.ConexionDB;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -41,7 +41,7 @@ public class VentanaInicioController implements Initializable {
     @FXML
     private AnchorPane PaneInit;
     
-    private Conexion conexion;
+    private ConexionDB conexion;
     @FXML
     private TableView<Articulo> tableMasBuscados;
     @FXML
@@ -51,7 +51,7 @@ public class VentanaInicioController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        conexion=new Conexion();
+        conexion=new ConexionDB();
         MetodosChangeWindow metodo = new MetodosChangeWindow();
         ArrayList<Articulo> art=conexion.selectArticuloMasBuscado(conexion.getConnection(),"ArticulosMasBuscados");
         InicializarTabla(tableMasBuscados, art);

@@ -25,13 +25,13 @@ import javafx.scene.control.Alert;
  * @author Henry Maticurena
  * 
  */
-public class Conexion {
+public class ConexionDB {
     private Connection conexion;
      private final String driver ="com.mysql.jdbc.Driver";
     private final String usuario ="hmaticur";
     private final String password ="ZXKFDLRFPL0";
     private final String url ="jdbc:mysql://127.0.0.1:3306/poliventas";
-    public Conexion(){
+    public ConexionDB(){
          conexion=null;
         try {
             Class.forName(driver);
@@ -40,15 +40,15 @@ public class Conexion {
                 System.out.println("Conexion exitosa");
             }
         } catch (ClassNotFoundException|SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             MetodosChangeWindow.alarm("Fallo la conexion a la base de datos");
         }
     }
      public Connection getConnection(){
-        return this.conexion;
+        return this.getConexion();
     }
      public void cerrarConexion() throws SQLException{
-        conexion.close();
+        getConexion().close();
     }
 
     
@@ -62,7 +62,7 @@ public class Conexion {
                 nuevo.add(art);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             MetodosChangeWindow.alarm("Ocurrio un problema con la conexion a la base de datos, reinicie aplicación");
         }
         return nuevo;
@@ -79,7 +79,7 @@ public class Conexion {
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             MetodosChangeWindow.alarm("Ocurrio un problema");
         } 
         return userPrueba;
@@ -94,7 +94,7 @@ public class Conexion {
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             MetodosChangeWindow.alarm("Ocurrio un problema");
         }
     }
@@ -107,9 +107,44 @@ public class Conexion {
                 MetodosChangeWindow.alarm("Los datos han sido actualizados");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             MetodosChangeWindow.alarm("Ocurrio un problema");
         }
         
+    }
+
+    /**
+     * @return the conexion
+     */
+    public Connection getConexion() {
+        return conexion;
+    }
+
+    /**
+     * @return the driver
+     */
+    public String getDriver() {
+        return driver;
+    }
+
+    /**
+     * @return the usuario
+     */
+    public String getUsuario() {
+        return usuario;
+    }
+
+    /**
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * @return the url
+     */
+    public String getUrl() {
+        return url;
     }
 }

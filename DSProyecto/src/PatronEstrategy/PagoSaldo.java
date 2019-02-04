@@ -6,7 +6,7 @@
 package PatronEstrategy;
 
 
-import Modelo.Conexion;
+import Modelo.ConexionDB;
 import Modelo.Pedido;
 import dsproyecto.MetodosChangeWindow;
 import java.sql.Connection;

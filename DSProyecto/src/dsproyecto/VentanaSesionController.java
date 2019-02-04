@@ -5,7 +5,7 @@
  */
 package dsproyecto;
 
-import Modelo.Conexion;
+import Modelo.ConexionDB;
 import Modelo.Usuario;
 import Modelo.Constants;
 import java.io.IOException;
@@ -46,12 +46,12 @@ public class VentanaSesionController implements Initializable {
     @FXML
     private AnchorPane WindowLogin;
 
-    private Conexion conexion;
+    private ConexionDB conexion;
     @FXML
     private Button exit;
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        conexion=new Conexion();
+        conexion=new ConexionDB();
         MetodosChangeWindow metodo = new MetodosChangeWindow();
         
         sesion.setOnAction((ActionEvent event) -> {

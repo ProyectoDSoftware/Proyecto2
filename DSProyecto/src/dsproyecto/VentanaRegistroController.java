@@ -6,7 +6,7 @@
 package dsproyecto;
 
 import Modelo.Articulo;
-import Modelo.Conexion;
+import Modelo.ConexionDB;
 import Modelo.Constants;
 import Modelo.Usuario;
 import java.net.URL;
@@ -64,14 +64,14 @@ public class VentanaRegistroController implements Initializable {
     @FXML
     private TextField txtPassword;
 
-    private Conexion conexion;
+    private ConexionDB conexion;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        conexion=new Conexion();
+        conexion=new ConexionDB();
         llenarComboBox();
         cancel.setOnAction((ActionEvent e)->{
             try {
