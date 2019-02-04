@@ -71,10 +71,9 @@ public class ConexionIT {
     @Test
     public void testSelectArticuloMasBuscado() {
         System.out.println("selectArticuloMasBuscado");
-        Connection conexion = null;
         String tipo = "ArticulosMasBuscados";
         Conexion instance = new Conexion();
-        ArrayList<Articulo> result = instance.selectArticuloMasBuscado(conexion, tipo);
+        ArrayList<Articulo> result = instance.selectArticuloMasBuscado(instance.getConnection(), tipo);
         result.forEach((articulo) -> {
             assertNotNull(articulo);
         });
