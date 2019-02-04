@@ -31,12 +31,8 @@ public class TablaArticuloNuevo {
         setColumnas();
     }
     private void setColumnas(){
-        nombre=new TableColumn("Nombre");
-        nombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        nombre.setCellFactory(TextFieldTableCell.forTableColumn());
-        categoria=new TableColumn("Categoría");
-        categoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
-        tablaArticulo.getColumns().addAll(nombre,categoria);
+       
+        tablaArticulo.getColumns().addAll(crearTablaNombre(),crearTablaCategoria());
     }
     public void setInicializar(ArrayList<Articulo> articulos){
         datos=FXCollections.observableArrayList(articulos);
@@ -44,5 +40,17 @@ public class TablaArticuloNuevo {
     }
     public TableView<Articulo> getTable(){
         return tablaArticulo;
+    }
+    
+     public TableColumn crearTablaNombre() {
+        nombre=new TableColumn("Nombre");
+        nombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        nombre.setCellFactory(TextFieldTableCell.forTableColumn());
+        return nombre;
+    }
+    public TableColumn crearTablaCategoria() {
+        categoria=new TableColumn("Categoría");
+        categoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        return categoria;
     }
 }
