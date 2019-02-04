@@ -12,10 +12,23 @@ import java.util.List;
  * @author Usuario
  */
 public class Administrador extends Usuario{
-    protected List<Usuario>usuarios;
+    private List<Usuario>usuarios;
 
     public Administrador() {
         super(null);
+    }
+
+    public Administrador(List<Usuario> usuarios, String username) {
+        super(username);
+        this.usuarios = usuarios;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 
     

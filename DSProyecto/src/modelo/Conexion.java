@@ -25,12 +25,16 @@ import javafx.scene.control.Alert;
  * @author Henry Maticurena
  * 
  */
+
 public class Conexion {
     private Connection conexion;
      private final String driver ="com.mysql.jdbc.Driver";
-    private final String usuario ="hmaticur";
-    private final String password ="ZXKFDLRFPL0";
-    private final String url ="jdbc:mysql://127.0.0.1:3306/poliventas";
+    //private final String usuario ="hmaticur";
+    //private final String password ="ZXKFDLRFPL0";
+    private final String usuario ="root";
+    private final String password ="root";
+    //private final String url ="jdbc:mysql://127.0.0.1:3306/poliventas";
+    private final String url ="jdbc:mysql://192.188.59.85:3306/proyectods";
     public Conexion(){
          conexion=null;
         try {
@@ -87,8 +91,8 @@ public class Conexion {
     
         public void insertDataBaseUser(Connection conexion,String valores){
             String[] datos = valores.split(",");
-            String sql = "call crearUsuario('" + datos[0] + "','" + datos[1] + "','" + datos[2] + "','" + datos[3] + "','" + datos[4] + "','"
-                    + datos[5] + "'," + datos[6] + ",'" + datos[7] + "','" + datos[8] + "','" + datos[9] + "');";
+            String sql = "call crearUsuario('" + datos[0] + "','" + datos[1] + "','" + datos[2] + "','" + datos[3] + "'," + datos[4] + ",'"
+                    + datos[5] + "','" + datos[6] + "','" + datos[7] + "','" + datos[8] + "'," + datos[9] + ");";
             try (PreparedStatement stmt = conexion.prepareStatement(sql);) {
                 int ingreso = stmt.executeUpdate();
                 if (ingreso > 0) {
