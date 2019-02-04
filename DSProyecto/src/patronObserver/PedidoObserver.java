@@ -9,6 +9,6 @@ package patronObserver;
  *
  * @author alvaro-pc
  */
-public class PedidoObserver {
+public interface PedidoObserver {
     
 }
