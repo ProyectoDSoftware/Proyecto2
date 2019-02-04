@@ -118,9 +118,9 @@ public class VentanaSesionController implements Initializable {
         if(users.getUsuario().equalsIgnoreCase(Constants.PRUEBA)){
             MetodosChangeWindow.alarm("el usuario no esta registrado");
         }
-        else if(users.getRol().equalsIgnoreCase(Constants.VENDE) && users.getContraseña().equalsIgnoreCase(tx2.getText()) && users.getDisponible()==Constants.ESTADO){
+        else if(users.getRol().equalsIgnoreCase(Constants.VENDE) && users.getContraseña().equalsIgnoreCase(tx2.getText())){
             metodo.ChangeWindow("VentanaComprador", WindowLogin,"Customer");
-        }else if(users.getRol().equalsIgnoreCase(Constants.ADMIN) &&  users.getContraseña().equalsIgnoreCase(tx2.getText()) && users.getDisponible()==Constants.ESTADO){
+        }else if(users.getRol().equalsIgnoreCase(Constants.ADMIN) &&  users.getContraseña().equalsIgnoreCase(tx2.getText())){
             metodo.ChangeWindow("VentanaVendedor", WindowLogin,"Seller");
         }else{
             metodo.alarm("el usuario o la contraseña estan incorrectas");

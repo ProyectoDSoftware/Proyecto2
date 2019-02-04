@@ -88,7 +88,8 @@ public class VentanaRegistroController implements Initializable {
             if(Verificar()){
                 MetodosChangeWindow.alarm("Campo incompleto");
             }else{
-                Usuario usuarionuevo=new Usuario(numrol(tipUser.getValue()), txtUser.getText(),txtPassword.getText(),txtName.getText(), txtLastName.getText(), txtTelephone.getText(),txtEmail.getText(), numerowhas(tipWhassapt.getValue()), txtDirection.getText(), txtCed.getText(), 1);
+                Usuario usuarionuevo=new Usuario(numrol(tipUser.getValue()), txtUser.getText(),txtPassword.getText(),txtName.getText(), txtLastName.getText(), txtTelephone.getText(),txtEmail.getText(), numerowhas(tipWhassapt.getValue()), txtDirection.getText(), txtCed.getText());
+                System.out.println(usuarionuevo.toString());
                 conexion.insertDataBaseUser(conexion.getConnection(), usuarionuevo.toString());
                 limpia();
                 MetodosChangeWindow.alarm("Registro completo");

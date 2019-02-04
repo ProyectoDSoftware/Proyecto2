@@ -20,10 +20,9 @@ public class Usuario {
     protected boolean whassapt;
     protected String direccion;
     protected String cedula;
-    protected int disponible;
     
 
-    public Usuario(String rol, String usuario, String contraseña, String nombre, String apellido, String telefono, String email, boolean whassapt, String direccion, String cedula, int disponible) {
+    public Usuario(String rol, String usuario, String contraseña, String nombre, String apellido, String telefono, String email, boolean whassapt, String direccion, String cedula) {
         this.rol = rol;
         this.usuario = usuario;
         this.contraseña = contraseña;
@@ -34,7 +33,6 @@ public class Usuario {
         this.whassapt = whassapt;
         this.direccion = direccion;
         this.cedula = cedula;
-        this.disponible = disponible;
     }
 
 
@@ -121,17 +119,9 @@ public class Usuario {
         this.rol = rol;
     }
 
-    public int getDisponible() {
-        return disponible;
-    }
-
-    public void setDisponible(int disponible) {
-        this.disponible = disponible;
-    }
-
     @Override
     public String toString() {
-        return cedula+","+nombre+","+apellido+","+telefono+","+whassapt+","+email+","+direccion+","+usuario+","+contraseña+","+rol+","+disponible;
+        return cedula+","+nombre+","+apellido+","+telefono+","+whassapt+","+email+","+direccion+","+usuario+","+contraseña+","+rol;
     }
     
     

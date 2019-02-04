@@ -11,8 +11,8 @@ package Modelo;
  */
 public class Comprador extends Usuario{
 
-    public Comprador(String rol, String usuario, String contraseña, String nombre, String apellido, String telefono, String email, boolean whassapt, String direccion, String cedula, int disponible) {
-        super(rol, usuario, contraseña, nombre, apellido, telefono, email, whassapt, direccion, cedula, disponible);
+    public Comprador(String rol, String usuario, String contraseña, String nombre, String apellido, String telefono, String email, boolean whassapt, String direccion, String cedula) {
+        super(rol, usuario, contraseña, nombre, apellido, telefono, email, whassapt, direccion, cedula);
     }
 
 

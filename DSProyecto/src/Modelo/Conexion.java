@@ -70,11 +70,11 @@ public class Conexion {
 
     public Usuario selectUsuario(Connection conexion,String username){
         Usuario userPrueba=new Usuario(Constants.PRUEBA);  
-        String sql="call SP_SeleccionarUsuario('"+username+"');";
+        String sql="call consultarUsuario('"+username+"');";
         try ( Statement stmt=conexion.createStatement();
             ResultSet rs=stmt.executeQuery(sql);){
             while(rs.next()){
-                Usuario user=new Usuario(rs.getString("nombrerol"), rs.getString("usuario"),rs.getString("passwd"),rs.getString("nombre"),rs.getString("apellido"), rs.getString("telefono"),rs.getString("email"), rs.getBoolean("whatsapp"), rs.getString("direccion"), rs.getString("cedula"), rs.getInt("disponible"));
+                Usuario user=new Usuario(rs.getString("nombrerol"), rs.getString("usuario"),rs.getString("passwd"),rs.getString("nombre"),rs.getString("apellido"), rs.getString("telefono"),rs.getString("email"), rs.getBoolean("whatsapp"), rs.getString("direccion"), rs.getString("cedula"));
                 return user;
             }
             
@@ -86,17 +86,19 @@ public class Conexion {
     }
     
         public void insertDataBaseUser(Connection conexion,String valores){
-        String sql="call SP_IngresarEmpleado('"+valores+"');";
-        try (PreparedStatement stmt=conexion.prepareStatement(sql);){
-            int ingreso=stmt.executeUpdate();
-            if(ingreso>0){
-                MetodosChangeWindow.alarm("Se ha ingresado correctamente los datos");
+            String[] datos = valores.split(",");
+            String sql = "call crearUsuario('" + datos[0] + "','" + datos[1] + "','" + datos[2] + "','" + datos[3] + "','" + datos[4] + "','"
+                    + datos[5] + "'," + datos[6] + ",'" + datos[7] + "','" + datos[8] + "','" + datos[9] + "');";
+            try (PreparedStatement stmt = conexion.prepareStatement(sql);) {
+                int ingreso = stmt.executeUpdate();
+                if (ingreso > 0) {
+                    MetodosChangeWindow.alarm("Se ha ingresado correctamente los datos");
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+                MetodosChangeWindow.alarm("Ocurrio un problema");
             }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-            MetodosChangeWindow.alarm("Ocurrio un problema");
-        }
     }
     public void actualizarDataBaseUsuario(Connection conection,Usuario empleado){
         String sql="call SP_ActualizarCliente('"+empleado.toString()+"');";
