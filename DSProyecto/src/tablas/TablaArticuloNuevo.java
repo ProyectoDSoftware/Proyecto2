@@ -18,22 +18,25 @@ import javafx.scene.control.cell.TextFieldTableCell;
  *
  * @author Usuario
  */
-public class TablaArticulo {
+public class TablaArticuloNuevo {
     private TableView<Articulo> tablaArticulo;
     
     private TableColumn<Articulo,String> nombre;
     private TableColumn<Articulo,String> categoria;
-    private TableColumn<Articulo,Integer> calificacion;
-    private TableColumn<Articulo,Double> precio;
 
     private ObservableList<Articulo> datos;
-    public TablaArticulo(){
+    public TablaArticuloNuevo(){
         tablaArticulo=new TableView();
         tablaArticulo.setEditable(true);
         setColumnas();
     }
     private void setColumnas(){
-        tablaArticulo.getColumns().addAll(crearTablaNombre(),crearTablaCategoria(),crearTablaCalificacion(),crearTablaPrecio());
+        nombre=new TableColumn("Nombre");
+        nombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        nombre.setCellFactory(TextFieldTableCell.forTableColumn());
+        categoria=new TableColumn("Categoría");
+        categoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        tablaArticulo.getColumns().addAll(nombre,categoria);
     }
     public void setInicializar(ArrayList<Articulo> articulos){
         datos=FXCollections.observableArrayList(articulos);
@@ -42,27 +45,4 @@ public class TablaArticulo {
     public TableView<Articulo> getTable(){
         return tablaArticulo;
     }
-     public TableColumn crearTablaNombre() {
-        nombre=new TableColumn("Nombre");
-        nombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        nombre.setCellFactory(TextFieldTableCell.forTableColumn());
-        return nombre;
-    }
-    public TableColumn crearTablaCategoria() {
-        categoria=new TableColumn("Categoría");
-        categoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
-        return categoria;
-    }
-    
-     public TableColumn crearTablaCalificacion() {
-        calificacion=new TableColumn("Calificación");
-        calificacion.setCellValueFactory(new PropertyValueFactory<>("calificacion"));
-        return calificacion;
-    }
-      public TableColumn crearTablaPrecio() {
-        precio=new TableColumn("Precio");
-        precio.setCellValueFactory(new PropertyValueFactory<>("precio"));
-        return precio;
-    }
-       
 }

@@ -20,19 +20,19 @@
       <Label layoutX="80.0" layoutY="229.0" text="Usuario:" />
       <Label layoutX="59.0" layoutY="254.0" text="Contraseña:" />
       <Label layoutX="71.0" layoutY="204.0" text="Whatsapp:" />
-      <TextField layoutX="133.0" layoutY="49.0" />
-      <TextField layoutX="133.0" layoutY="75.0" />
-      <TextField layoutX="133.0" layoutY="100.0" />
-      <TextField layoutX="133.0" layoutY="125.0" />
-      <TextField layoutX="133.0" layoutY="150.0" />
-      <TextField layoutX="133.0" layoutY="175.0" />
-      <TextField layoutX="133.0" layoutY="225.0" />
-      <TextField layoutX="133.0" layoutY="250.0" />
-      <ChoiceBox layoutX="133.0" layoutY="200.0" prefWidth="150.0" />
+      <TextField fx:id="txtName" layoutX="133.0" layoutY="49.0" />
+      <TextField fx:id="txtLastName" layoutX="133.0" layoutY="75.0" />
+      <TextField fx:id="txtCed" layoutX="133.0" layoutY="100.0" />
+      <TextField fx:id="txtTelephone" layoutX="133.0" layoutY="125.0" />
+      <TextField fx:id="txtDirection" layoutX="133.0" layoutY="150.0" />
+      <TextField fx:id="txtEmail" layoutX="133.0" layoutY="175.0" />
+      <TextField fx:id="txtUser" layoutX="133.0" layoutY="225.0" />
       <Button fx:id="regist" layoutX="74.0" layoutY="313.0" mnemonicParsing="false" text="Registrar" />
       <Button fx:id="clear" layoutX="168.0" layoutY="313.0" mnemonicParsing="false" text="Limpiar" />
       <Button fx:id="cancel" layoutX="251.0" layoutY="313.0" mnemonicParsing="false" text="Cancelar" />
-      <ChoiceBox layoutX="133.0" layoutY="275.0" prefWidth="150.0" />
       <Label layoutX="38.0" layoutY="279.0" text="Tipo de usuario:" />
+      <TextField fx:id="txtPassword" layoutX="133.0" layoutY="250.0" />
+      <ComboBox fx:id="tipWhassapt" layoutX="133.0" layoutY="200.0" prefWidth="150.0" />
+      <ComboBox fx:id="tipUser" layoutX="133.0" layoutY="275.0" prefWidth="150.0" />
    </children>
 </AnchorPane>
