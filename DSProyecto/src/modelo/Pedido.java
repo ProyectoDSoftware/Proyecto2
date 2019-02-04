@@ -20,6 +20,16 @@ public class Pedido {
     protected boolean estado;
     protected Date fechadeEntrega;
 
+    public Pedido(List<Articulo> articulos, double costo, boolean estado, Date fechadeEntrega) {
+        this.articulos = articulos;
+        this.costo = costo;
+        this.estado = estado;
+        this.fechadeEntrega = fechadeEntrega;
+    }
+
+    public Pedido(){
+        
+    }
     public List<Articulo> getArticulos() {
         return articulos;
     }
@@ -58,7 +68,7 @@ public class Pedido {
     }
     
     public void notificarEstado(Pedido pedido){
-        if(estado){
+        if(pedido.estado){
             NotificacionVendedor alarmaVendedor=new NotificacionVendedor();
             alarmaVendedor.notifyObservers();
             NotificacionComprador alarmaComprador=new NotificacionComprador();

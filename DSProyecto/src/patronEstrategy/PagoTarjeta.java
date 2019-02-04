@@ -14,10 +14,20 @@ import modelo.Usuario;
  * @author Usuario
  */
 public class PagoTarjeta implements PagoEstrategy{
-    protected String Numero;
-    protected Usuario usuario;
-    protected double cantidad;
+    private String Numero;
+    private Usuario usuario;
+    private double cantidad;
 
+    public PagoTarjeta(String Numero, Usuario usuario, double cantidad) {
+        this.Numero = Numero;
+        this.usuario = usuario;
+        this.cantidad = cantidad;
+    }
+
+    public PagoTarjeta() {
+    }
+
+    
     @Override
     public void pagar(Pedido pedido) {
         if(cantidad<pedido.getCosto()){
@@ -25,6 +35,30 @@ public class PagoTarjeta implements PagoEstrategy{
         }else{
             cantidad-=pedido.getCosto();
         }
+    }
+
+    public String getNumero() {
+        return Numero;
+    }
+
+    public void setNumero(String Numero) {
+        this.Numero = Numero;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public double getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(double cantidad) {
+        this.cantidad = cantidad;
     }
     
 }
