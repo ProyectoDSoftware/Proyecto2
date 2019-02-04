@@ -7,6 +7,8 @@ package modelo;
 
 import java.util.Date;
 import java.util.List;
+import patronObserver.NotificacionComprador;
+import patronObserver.NotificacionVendedor;
 
 /**
  *
@@ -15,7 +17,7 @@ import java.util.List;
 public class Pedido {
     protected List<Articulo>articulos;
     protected double costo;
-    protected String estado;
+    protected boolean estado;
     protected Date fechadeEntrega;
 
     public List<Articulo> getArticulos() {
@@ -34,11 +36,11 @@ public class Pedido {
         this.costo = costo;
     }
 
-    public String getEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
 
@@ -55,5 +57,14 @@ public class Pedido {
         return "articulos=" + articulos + ", costo=" + costo + ", estado=" + estado + ", fechadeEntrega=" + fechadeEntrega;
     }
     
-    
+    public void notificarEstado(Pedido pedido){
+        if(estado){
+            NotificacionVendedor alarmaVendedor=new NotificacionVendedor();
+            alarmaVendedor.notifyObservers();
+            NotificacionComprador alarmaComprador=new NotificacionComprador();
+            alarmaComprador.notifyObservers();
+            ///ss
+        }
+        
+    }    
 }
