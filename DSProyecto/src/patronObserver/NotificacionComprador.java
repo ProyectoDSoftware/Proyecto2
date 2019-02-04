@@ -9,6 +9,11 @@ package patronObserver;
  *
  * @author alvaro-pc
  */
-public class NotificacionComprador {
+public class NotificacionComprador implements PedidoObserver  {
+
+    @Override
+    public String notifyObservers() {
+      return"El pedido ha sido entregado por el vendedor";
+    }
     
 }

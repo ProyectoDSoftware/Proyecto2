@@ -11,4 +11,6 @@ package patronObserver;
  */
 public interface PedidoObserver {
     
+    public String notifyObservers();
+    
 }
