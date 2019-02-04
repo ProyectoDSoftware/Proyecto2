@@ -33,20 +33,7 @@ public class TablaArticulo {
         setColumnas();
     }
     private void setColumnas(){
-        nombre=new TableColumn("Nombre");
-        nombre.setMinWidth(100);
-        nombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        nombre.setCellFactory(TextFieldTableCell.forTableColumn());
-        categoria=new TableColumn("Categoría");
-        categoria.setMinWidth(100);
-        categoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
-        calificacion=new TableColumn("Calificación");
-        calificacion.setMinWidth(100);
-        calificacion.setCellValueFactory(new PropertyValueFactory<>("calificacion"));
-        precio=new TableColumn("Precio");
-        precio.setMinWidth(100);
-        precio.setCellValueFactory(new PropertyValueFactory<>("precio"));
-        tablaArticulo.getColumns().addAll(nombre,categoria,calificacion,precio);
+        tablaArticulo.getColumns().addAll(crearTablaNombre(),crearTablaCategoria(),crearTablaCalificacion(),crearTablaPrecio());
     }
     public void setInicializar(ArrayList<Articulo> articulos){
         datos=FXCollections.observableArrayList(articulos);
@@ -55,4 +42,31 @@ public class TablaArticulo {
     public TableView<Articulo> getTable(){
         return tablaArticulo;
     }
+     public TableColumn crearTablaNombre() {
+        nombre=new TableColumn("Nombre");
+        nombre.setMinWidth(100);
+        nombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        nombre.setCellFactory(TextFieldTableCell.forTableColumn());
+        return nombre;
+    }
+    public TableColumn crearTablaCategoria() {
+        categoria=new TableColumn("Categoría");
+        categoria.setMinWidth(100);
+        categoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        return categoria;
+    }
+    
+     public TableColumn crearTablaCalificacion() {
+        calificacion=new TableColumn("Calificación");
+        calificacion.setMinWidth(100);
+        calificacion.setCellValueFactory(new PropertyValueFactory<>("calificacion"));
+        return calificacion;
+    }
+      public TableColumn crearTablaPrecio() {
+        precio=new TableColumn("Precio");
+        precio.setMinWidth(100);
+        precio.setCellValueFactory(new PropertyValueFactory<>("precio"));
+        return precio;
+    }
+       
 }
